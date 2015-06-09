@@ -5,7 +5,7 @@ var  express       = require('express'),
      bodyParser    = require('body-parser'),
      mongoose      = require('mongoose'),
      User          = require('./server/models/user.server.model'),
-     cor           = require('cors'),
+     cors           = require('cors'),
      secrets       = require('./config/secrets'),
      testdb        = require('./config/testdb'),
      route         = require('./server/routes'),
@@ -28,6 +28,7 @@ var app = express();
 /**
  * Express configuration.
  */
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true})); //use bodyParser for request and parsing info
 app.use(bodyParser.json());
