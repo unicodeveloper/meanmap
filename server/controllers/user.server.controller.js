@@ -126,7 +126,7 @@ module.exports = {
 
     User.find({email: req.body.email}, function(err, user) {
       if(err){
-        res.status(500).json({ error: 'Server Error'});
+        res.status(500).json({ error: err });
       }
 
       if(user.length === 0){
@@ -143,7 +143,7 @@ module.exports = {
           if(result){
             res.json({
               success: true,
-              message: 'User authenticated successfully',
+              user: user,
               token: token
             });
           } else {

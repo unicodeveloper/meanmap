@@ -1,0 +1,42 @@
+{
+  "name": "meanmap",
+  "version": "0.0.0",
+  "homepage": "https://github.com/busayo/meanmap",
+  "authors": [
+    "busayo <prosperotemuyiwa@gmail.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals"
+  ],
+  "keywords": [
+    "Mean",
+    "map",
+    "meanmap",
+    "maps",
+    "leaflet"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "~4.3.0",
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "bootstrap": "~3.3.4",
+    "angular-sanitize": "~1.4.0",
+    "angular-material": "~0.9.8",
+    "ui-bootstrap": "~0.13.0",
+    "angular-bootstrap": "~0.13.0",
+    "angularjs-toaster": "~0.4.14",
+    "angular-toastr": "~1.4.1"
+  }
+}
