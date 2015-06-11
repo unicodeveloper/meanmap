@@ -9,7 +9,7 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
 
   $scope.logOut = function(){
     Auth.logOutUser();
-    toastr.success('You are Logged Out');
+    toastr.success('You are Logged Out', { timeOut: 1000 });
     $location.path('/');
   };
 
@@ -35,11 +35,11 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
       if(success) {
         $window.sessionStorage["token"] = data.token;
         $window.sessionStorage["users"] = JSON.stringify(data.user);
-        toastr.success('Login Successful');
+        toastr.success('Login Successful', { timeOut: 1000 });
         $location.path('/account');
       }
       else {
-        toastr.error( data.message, 'Error');
+        toastr.error( data.message, 'Error', { timeOut: 2000 });
       }
     });
   };
