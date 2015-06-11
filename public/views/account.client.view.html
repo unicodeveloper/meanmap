@@ -2,9 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-white">
-        <h4 class="text-white">PROSPER OTEMUYIWA</h4>
+        <h4 class="text-white">{{ userDetails.fullname }}</h4>
         <ul>
-          <li><i class="fa fa-clock-o"></i> Member since Monday 8th of June 2015</li>
+          <li><i class="fa fa-clock-o"></i> Member since
+          <span>{{ userDetails.registered | amDateFormat:'dddd, MMMM D, YYYY'}}</span></li>
         </ul>
       </div>
     </div>
@@ -16,20 +17,21 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="faq">
-          <img class="img-rounded" alt="PROSPER OTEMUYIWA" src="//www.gravatar.com/avatar/1097492785caf9ffeebffeb624202d8f?s=150">
+          <img class="img-rounded" alt="{{ userDetails.fullname }}" src="{{ userDetails.user_avatar }}" width="200" height="200">
         </div>
 
         <div class="faq">
           <h5>
-            PROSPER OTEMUYIWA elsewhere:
+            {{ userDetails.fullname }} elsewhere:
           </h5>
           <ul>
-            <li><a href="https://github.com/busayo"><i class="fa fa-github"></i> GitHub</a></li>
-            <li><a href="http://prosperotemuyiwa.com"><i class="fa fa-globe"></i> Website / Blog</a></li>
-            <li><a href="https://twitter.com/unicodeveloper"><i class="fa fa-twitter"></i> Twitter</a></li>
+            <li><a href="{{ userDetails.github_profile }}"><i class="fa fa-github"></i> GitHub</a></li>
+            <li><a href="{{ userDetails.website }}"><i class="fa fa-globe"></i> Website / Blog</a></li>
           </ul>
           <br/>
           <ul>
+            <li ng-if="(userDetails.hire_status === 'No')"><i class="fa fa-suitcase"></i> Not Available for Hire</li>
+            <li ng-if="(userDetails.hire_status === 'Yes')"><i class="fa fa-suitcase"></i> Available for Hire</li>
             <br/>
           </ul>
         </div>
@@ -37,9 +39,15 @@
 
       <div class="col-sm-6">
         <div class="faq">
-          <h5>Biography</h5>
-            <p>Creator of Laranaija ( http://laranaija.com ) and Learner Codes ( http://learner.codes ).
-Food Lover, Romantic Developer,  Open Source Advocate, Developer Evangelist, Rockstar Trainer. </p>
+          <h5>Tell Us About Yourself</h5>
+            <p>{{ userDetails.bio }}</p>
+        </div>
+
+        <div class="faq">
+          <h5>Location</h5>
+          <div ng-controller="MapController">
+            <leaflet id="personalMap" markers="personalMapMarker" defaults="defaults" zoom="80" height="400px" width="540px"></leaflet>
+          </div>
         </div>
       </div>
     </div>

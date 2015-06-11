@@ -37,6 +37,14 @@
     "ui-bootstrap": "~0.13.0",
     "angular-bootstrap": "~0.13.0",
     "angularjs-toaster": "~0.4.14",
-    "angular-toastr": "~1.4.1"
+    "angular-toastr": "~1.4.1",
+    "angular-moment": "~0.10.1",
+    "angular-leaflet": "~0.8.2",
+    "ngstorage": "~0.3.4",
+    "ng-lodash": "~0.2.3",
+    "angular-messages": "~1.4.0"
+  },
+  "resolutions": {
+    "angular": "1.4.0"
   }
 }

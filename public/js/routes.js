@@ -23,6 +23,11 @@ app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',functi
         templateUrl: './views/developers.client.view.html',
         requireAuth: false
     })
+    .when('/mean-developers/:username', {
+        templateUrl: './views/account.client.view.html',
+        controller: 'ProfileController',
+        requireAuth: false
+    })
     .when('/page/contact', {
         templateUrl: './views/contact.client.view.html',
         requireAuth: false

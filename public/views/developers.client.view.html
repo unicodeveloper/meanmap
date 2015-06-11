@@ -1,0 +1,17 @@
+ <section class="features features-6">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+            <h4>List of Mean Stack Developers all over the world</h4>
+        </div>
+      </div>
+
+      <div class="row" ng-controller="DeveloperController">
+        <br>
+          <div ng-repeat="dev in allUsers" class="col-md-1 col-sm-6 text-center feature">
+            <a href="/mean-developers/{{ dev.username }}">
+            <img class="img-rounded" alt="{{ dev.username }}" src="{{ dev.user_avatar }}">
+            </a>
+          </div>
+      </div>
+</section>

@@ -1,32 +1,51 @@
-app.controller('UserController', ['$rootScope','$scope','$http','$location','$window','Auth','toastr', function($rootScope, $scope, $http, $location,$window, Auth, toastr) {
+app.controller('UserController', ['$rootScope','$scope','$http','$location','$window','$localStorage','Auth','User','toastr','leafletData','Geocoder', function($rootScope,$scope,$http,$location,$window,$localStorage,Auth,User,toastr,leafletData,Geocoder) {
 
-  $scope.isLoggedIn = function(){
-    if($window.sessionStorage["users"]){
-      $rootScope.currentUser = JSON.parse($window.sessionStorage["users"]);
+  var userId =  $rootScope.currentUser[0]._id;
+
+  User.getProfile(userId, function(success, data){
+    if(success){
+      $scope.userDetails = data.user;
+      $rootScope.fullname = data.user.fullname;
+      console.log("User Profile", data.user);
     }
-    return Auth.isLoggedIn();
-  };
+    else{
+      console.log("Nothing Found", data);
+    }
+  });
 
-  $scope.logOut = function(){
-    Auth.logOutUser();
-    toastr.success('You are Logged Out');
-    $location.path('/');
-  };
+  Geocoder.geocodeAddress($rootScope.currentUser[0].address).then( function(response){
 
+    angular.extend($scope, {
 
-  $scope.getProfile =  function(){
-    var username = $scope.user.email, password = $scope.user.password;
-
-    Auth.loginUser(username, password, function(success, data) {
-      if(success) {
-        $window.sessionStorage["token"] = data.token;
-        $window.sessionStorage["users"] = JSON.stringify(data.user);
-        toastr.success('Login Successful');
-        $location.path('/account');
-      }
-      else {
-        toastr.error( data.message, 'Error');
+      markers: {
+        Marker: {
+            lat: response.lat,
+            lng: response.lng,
+            message: "You are here",
+            focus: true,
+            draggable: false,
+        }
+      },
+      layers: {
+        baselayers: {
+          osm: {
+              name: 'OpenStreetMap',
+              url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
+              type: 'xyz'
+          }
+        }
+      },
+      defaults: {
+        scrollWheelZoom: false
       }
     });
-  };
+
+
+  });
+
+
+  leafletData.getMap().then(function(map) {
+    L.GeoIP.centerMapOnPosition(map, 15);
+  });
+
 }]);
