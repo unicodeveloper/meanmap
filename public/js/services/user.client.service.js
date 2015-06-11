@@ -31,9 +31,6 @@ app.factory('User', ['$http','$q', '$window', function($http, $q, $window) {
       return $http.get('/api/users');
     },
 
-    registerUser: function(){
-
-    },
 
     logOutUser: function(){
        delete $window.sessionStorage["users"];

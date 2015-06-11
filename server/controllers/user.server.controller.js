@@ -31,12 +31,12 @@ module.exports = {
     user.save( function(err, users){
       if(err) {
         if(err.name == 'MongoError' && err.message.indexOf('$email_1') > 0 ) {
-          res.status(400).json({ error: 'Email is already registered. Please choose another' });
+          res.json({ Error: 'Email is already registered. Please choose another' });
         }else if ( err.name == 'MongoError' && err.message.indexOf('$username_1') > 0) {
-          res.status(500).json({ error: 'Username is already taken. Please choose another' });
+          res.json({ Error: 'Username is already taken. Please choose another' });
         }
       } else {
-        res.status(200).json({ success: true, message: "User Registered successfully" });
+        res.status(200).json({ success: true, message: "User Registered successfully. Please, login and be Mean" });
       }
     });
   },

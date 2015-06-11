@@ -8,6 +8,7 @@ app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',functi
     })
     .when('/user/create', {
         templateUrl: './views/create-user.client.view.html',
+        controller: 'AuthController',
         requireAuth: false
     })
     .when('/auth/login', {
@@ -34,6 +35,11 @@ app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',functi
     })
     .when('/account', {
         templateUrl: './views/account.client.view.html',
+        controller: 'UserController',
+        requireAuth: true,
+    })
+    .when('/account/edit', {
+        templateUrl: './views/edit-account.client.view.html',
         controller: 'UserController',
         requireAuth: true,
     })
