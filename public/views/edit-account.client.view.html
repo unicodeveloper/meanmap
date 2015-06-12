@@ -1,0 +1,73 @@
+<section class="news news-1">
+  <div class="container">
+    <h1>Edit Profile </h1>
+    <hr/>
+
+    <div class="row">
+      <form name="editProfileForm" ng-submit="editProfile()">
+        <div class="col-md-6">
+          <!-- Name Form Input -->
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input class="form-control" name="name" type="text" value="{{ userDetails.fullname }}" id="name">
+          </div>
+
+          <!-- Username Form Input -->
+          <div class="form-group">
+              <label for="username">Username</label>
+              <input class="form-control" name="username" type="text" value="{{ userDetails.username }}" id="username">
+          </div>
+
+
+          <div class="form-group">
+              <label for="hire">Available for hire</label>
+              <select class="form-control" id="hire" name="hire"><option value="1">Yes</option><option value="0" selected="selected">No</option></select>
+          </div>
+
+          <!-- Profile_image Form Input -->
+          <div class="form-group">
+              <label for="profile_image">Profile Image</label>
+              <input name="profile_image" ng-model="profile_image" type="file" id="profile_image">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+            <!-- Address Form Input -->
+            <div class="form-group">
+              <label for="address">Address</label> <small>(For the map)</small>
+              <input class="form-control" name="address" type="text" value="{{ userDetails.address }}" id="address">
+            </div>
+
+            <!-- Twitter Form Input -->
+            <div class="form-group">
+              <label for="twitter">Twitter</label> <small>(Starting with http:// or https://)</small>
+              <input class="form-control" name="twitter" type="text" value="{{ userDetails.twitter_handle }}" id="twitter">
+            </div>
+
+            <!-- Website Form Input -->
+            <div class="form-group">
+              <label for="website">Website</label> <small>(Starting with http:// or https://)</small>
+              <input class="form-control" name="website" type="text" value="{{ userDetails.website }}" id="website">
+            </div>
+
+            <!-- Github_url Form Input -->
+            <div class="form-group">
+              <label for="github_url">Github Url</label> <small>(Starting with http:// or https://)</small>
+              <input class="form-control" name="github_url" type="text" value="{{ userDetails.github_profile }}" id="github_url">
+            </div>
+
+            <!-- Bio Form Input -->
+            <div class="form-group">
+              <label for="bio">Bio</label>
+              <textarea class="form-control" name="bio" cols="50" rows="10" id="bio">{{ userDetails.bio }} </textarea>
+            </div>
+        </div>
+
+        <!-- Save Changes Form Input -->
+        <div class="form-group">
+          <button class="form-control btn btn-block" type="submit">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

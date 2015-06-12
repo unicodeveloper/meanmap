@@ -67,6 +67,7 @@ module.exports = {
       userDetails.address         = user.address;
       userDetails.github_profile  = user.github_profile;
       userDetails.website         = user.website;
+      userDetails.twitter_handle  = user.twitter_handle;
       userDetails.registered      = user.registered_on;
 
       res.json({success: true, user: userDetails});

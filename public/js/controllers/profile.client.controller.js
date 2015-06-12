@@ -8,9 +8,7 @@ app.controller('ProfileController', ['$rootScope','$scope','$http','$location','
     else{
       console.log("Nothing Found", data);
     }
-});
-
-
+  });
 }]);
 
 

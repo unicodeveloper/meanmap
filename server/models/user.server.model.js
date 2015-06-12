@@ -12,6 +12,7 @@ var mongoose          = require('mongoose'),
     bio:           { type: String, default: ''},
     admin:         { type: Boolean, default: false },
     user_avatar:   { type: String, default: 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png' },
+    twitter_handle:{ type: String, default: ''},
     registered_on: { type: Date, default: Date.now }
 });
 

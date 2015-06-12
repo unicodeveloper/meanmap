@@ -28,8 +28,8 @@ app.factory('Auth', ['$http','$q', '$window', function($http, $q, $window) {
     },
 
     logOutUser: function(){
-       delete $window.sessionStorage["users"];
-       delete $window.sessionStorage["token"];
+      delete $window.sessionStorage["users"];
+      delete $window.sessionStorage["token"];
     }
   };
 }]);
