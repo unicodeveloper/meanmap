@@ -6,7 +6,7 @@ module.exports = {
 
   sendMessage: function(req, res, next){
 
-    var transporter = nodemailer.createTransport(smtpTransport(secrets.mailOptions));
+    var transporter = nodemailer.createTransport(secrets.mailOptions);
     var fullname    = req.body.name.toLowerCase();
     var senderEmail = req.body.email.toLowerCase();
     var emailTo     = 'prosperotemuyiwa@gmail.com';
