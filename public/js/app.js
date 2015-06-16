@@ -1,4 +1,4 @@
-var app = angular.module('meanmap', ['ngRoute','ngMessages','angularMoment','ngFileUpload','leaflet-directive','ui.bootstrap','appRoutes','ngSanitize','toastr','geocoder','ngLodash'])
+var app = angular.module('meanmap', ['ngRoute','ngStorage','ngMessages','angularMoment','ngFileUpload','leaflet-directive','ui.bootstrap','appRoutes','ngSanitize','toastr','geocoder','ngLodash'])
   .factory('authInterceptor', function($q, $location, $window){
     return {
       request: function(config){
