@@ -1,6 +1,6 @@
-var app = angular.module('appRoutes', []);
+var appRoutes = angular.module('appRoutes', []);
 
-app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',function($routeProvider, $locationProvider, $sceDelegateProvider){
+appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',function($routeProvider, $locationProvider, $sceDelegateProvider){
   $routeProvider
     .when('/', {
         templateUrl: './views/home.client.view.html',
