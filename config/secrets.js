@@ -10,8 +10,8 @@ module.exports = {
     service: 'Gmail',
     port: 465,
     auth: {
-      user: process.env.user,
-      pass: process.env.pass
+      user: process.env.USER,
+      pass: process.env.PASS
     }
   },
 
