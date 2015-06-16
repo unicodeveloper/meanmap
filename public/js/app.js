@@ -22,7 +22,6 @@ var app = angular.module('meanmap', ['ngRoute','ngStorage','ngMessages','angular
     $httpProvider.interceptors.push('authInterceptor');
     cfpLoadingBarProvider.includeSpinner   = false;
     cfpLoadingBarProvider.includeBar       = true;
-    cfpLoadingBarProvider.latencyThreshold = 5;
   }])
   .run(['$rootScope', '$location', function($rootScope, $location) {
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
