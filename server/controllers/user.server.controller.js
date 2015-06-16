@@ -6,7 +6,8 @@
     multiparty  = require('multiparty'),
     path        = require('path'),
     uuid        = require('node-uuid'),
-    cloudinary  = require('cloudinary');
+    cloudinary  = require('cloudinary'),
+    gravatar    = require('gravatar');
 
 module.exports = {
   /**
@@ -26,7 +27,8 @@ module.exports = {
    * @return Void
    */
   registerUser: function(req, res){
-    var user  = new User();
+    var user            = new User();
+    var secureImageUrl  = gravatar.url(req.body.email, {s: '200', r: 'x', d: 'retro'}, true);
     user.username       = req.body.username;
     user.fullname       = req.body.fullname;
     user.email          = req.body.email;
@@ -34,6 +36,7 @@ module.exports = {
     user.website        = req.body.website;
     user.github_profile = req.body.github_profile;
     user.address        = req.body.address;
+    user.user_avatar    = secureImageUrl;
 
     user.save( function(err, users){
       if(err) {
@@ -82,6 +85,13 @@ module.exports = {
     });
   },
 
+  /**
+   * [getEachUserByUsername description]
+   * @param  {[type]}   req  [description]
+   * @param  {[type]}   res  [description]
+   * @param  {Function} next [description]
+   * @return {[type]}        [description]
+   */
   getEachUserByUsername: function(req, res, next){
     var userReal = req.params.username;
 
@@ -206,6 +216,12 @@ module.exports = {
      });
   },
 
+  /**
+   * [postPhoto description]
+   * @param  {[type]} req [description]
+   * @param  {[type]} res [description]
+   * @return {[type]}     [description]
+   */
   postPhoto: function(req, res){
     var fileName = '';
     var size = '';
