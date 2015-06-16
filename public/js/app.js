@@ -1,4 +1,4 @@
-var app = angular.module('meanmap', ['ngRoute','ngStorage','ngMessages','angularMoment','ngFileUpload','leaflet-directive','ui.bootstrap','appRoutes','ngSanitize','toastr','geocoder','ngLodash'])
+var app = angular.module('meanmap', ['ngRoute','ngStorage','ngMessages','angularMoment','angular-loading-bar','ngFileUpload','leaflet-directive','ui.bootstrap','appRoutes','ngSanitize','toastr','geocoder','ngLodash'])
   .factory('authInterceptor', function($q, $location, $window){
     return {
       request: function(config){
@@ -18,9 +18,12 @@ var app = angular.module('meanmap', ['ngRoute','ngStorage','ngMessages','angular
       }
      };
   })
-  .config(function($httpProvider){
+  .config(['cfpLoadingBarProvider','$httpProvider', function(cfpLoadingBarProvider, $httpProvider){
     $httpProvider.interceptors.push('authInterceptor');
-  })
+    cfpLoadingBarProvider.includeSpinner   = false;
+    cfpLoadingBarProvider.includeBar       = true;
+    cfpLoadingBarProvider.latencyThreshold = 5;
+  }])
   .run(['$rootScope', '$location', function($rootScope, $location) {
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
       if($rootScope.currentUser === undefined  && next.requireAuth) {

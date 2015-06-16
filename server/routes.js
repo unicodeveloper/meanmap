@@ -19,7 +19,6 @@ module.exports = function(app) {
   app.delete('/api/user/:user_id', User.deleteEachUserDetails);
 
   app.post('/api/file/upload', User.postPhoto);
-
   app.post('/api/contact', Contact.sendMessage);
 
 

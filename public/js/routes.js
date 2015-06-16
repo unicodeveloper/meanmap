@@ -60,7 +60,6 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
 
     //eliminate the hashbang
     $locationProvider.html5Mode(true);
-    $locationProvider.hashPrefix('!');
 
     //whitelist youtube url to be trusted by AngularJs
     $sceDelegateProvider.resourceUrlWhitelist([
