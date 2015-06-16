@@ -1,5 +1,6 @@
-var User        = require('./controllers/user.server.controller');
-var jwt         = require('jsonwebtoken'),
+var User        = require('./controllers/user.server.controller'),
+    Contact     = require('./controllers/contact.server.controller'),
+    jwt         = require('jsonwebtoken'),
     secrets     = require('../config/secrets'),
     verifyToken = require('../config/tokenMiddleware'),
     passport    = require('passport');
@@ -16,6 +17,10 @@ module.exports = function(app) {
   app.get('/api/users/:username',   User.getEachUserByUsername);
   app.put('/api/user/:user_id',    User.updateEachUserDetails);
   app.delete('/api/user/:user_id', User.deleteEachUserDetails);
+
+  app.post('/api/file/upload', User.postPhoto);
+
+  app.post('/api/contact', Contact.sendMessage);
 
 
 };

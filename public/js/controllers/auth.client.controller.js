@@ -7,6 +7,8 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
     return Auth.isLoggedIn();
   };
 
+
+
   $scope.logOut = function(){
     Auth.logOutUser();
     toastr.success('You are Logged Out', { timeOut: 1000 });
@@ -41,6 +43,7 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
         toastr.error(data.Error, 'Error', { timeOut: 2000 });
       }
     });
+
   };
 
   $scope.logIn =  function(){
@@ -50,6 +53,15 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
       if(success) {
         $window.sessionStorage["token"] = data.token;
         $window.sessionStorage["users"] = JSON.stringify(data.user);
+        $scope.userData = data.user[0];
+        $scope.userAvatar = data.user[0].user_avatar;
+        console.log("Scope Object", $scope.userData);
+        $scope.email = data.user[0].email;
+        $rootScope.fullname = data.user[0].fullname;
+        console.log("Email", $scope.email);
+        console.log("Avatar", $scope.userAvatar);
+        console.log("Full name", $scope.fullname);
+        $rootScope.$apply();
         toastr.success('Login Successful', { timeOut: 1000 });
         $location.path('/account');
       }

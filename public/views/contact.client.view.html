@@ -7,26 +7,34 @@
       </div>
 
       <div class="row">
-        <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-          <form method="POST" action="http://laramap.com/contact" accept-charset="UTF-8"><input name="_token" type="hidden" value="PAV5ZcJNy7eViA9Sbn21EEspqz5axlhXHG6O8u52">
+        <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" ng-controller="ContactController">
+          <form name="contactForm" ng-submit="sendMessage()">
             <!-- Name Form Input -->
-            <div class="form-group">
-                <input class="form-control" name="name" type="text" placeholder="Name...e.g Toni Oladosu">
-                <input class="form-control" name="email" type="text" placeholder="Email...e.g toni@gmail.com">
+            <div class="form-group col-lg-12">
+              <input class="form-control" name="name" ng-model="name" type="text" placeholder="Name...e.g Toni Oladosu">
+              <div class="help-block text-danger" ng-if="contactForm.name.$dirty" ng-messages="contactForm.name.$error">
+                 <div ng-message="required">Name is required.</div>
+              </div>
+            </div>
+
+            <div class="form-group col-lg-12">
+             <input class="form-control" name="email" ng-model="email" type="text" placeholder="Email...e.g toni@gmail.com">
+             <div class="help-block text-danger" ng-if="contactForm.email.$dirty" ng-messages="contactForm.email.$error">
+                <div ng-message="required">Email is required.</div>
+              </div>
             </div>
 
             <!-- Message Form Input -->
             <div class="form-group">
-                <textarea class="form-control" name="message" cols="50" rows="10"></textarea>
+                <textarea class="form-control" name="message" ng-model="message" cols="50" rows="10"></textarea>
+                <div class="help-block text-danger" ng-if="contactForm.message.$dirty" ng-messages="contactForm.message.$error">
+                 <div ng-message="required">Message is required.</div>
+                </div>
             </div>
-                                            <!-- Submit Enquiry » Form Input -->
+           <!-- Submit Enquiry » Form Input -->
             <div class="form-group">
-                <input class="form-control" type="submit" value="Submit Enquiry &raquo;">
+                <button class="form-control btn btn-block" ng-disabled="contactForm.$invalid" type="submit">Submit Enquiry &raquo;</button>
             </div>
-
-            <p class="sub">
-                * We don’t share your personal info with anyone. Check out our <a href="http://laramap.com/page/imprint"> Privacy Policy</a> for more information.
-            </p>
           </form>
         </div>
       </div>
@@ -37,7 +45,7 @@
   <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
-            <h6 class="text-white">Follow <a href="https://twitter.com/meanmap">@meanmap</a> for updates</h6>
+            <h6 class="text-white">Follow <a href="https://twitter.com/meanmapdotcom">@meanmapdotcom</a> for updates</h6>
         </div>
     </div>
 

@@ -1,5 +1,11 @@
 var User        = require('../models/user.server.model'),
-    jwt         = require('jsonwebtoken');
+    jwt         = require('jsonwebtoken'),
+    bluebird    = require('bluebird'),
+    Q           = require('q'),
+    fs          = bluebird.promisifyAll(require('fs')),
+    multiparty  = require('multiparty'),
+    path        = require('path'),
+    uuid        = require('node-uuid');
 
 module.exports = {
   /**
@@ -116,10 +122,11 @@ module.exports = {
   updateEachUserDetails: function(req, res, next){
     var userId      = req.params.user_id;
     var userDetails = req.body;
+    console.log( req.body);
 
     User.update({_id: userId}, userDetails, function (err) {
       if(err) {
-        res.status(404).json({success: false, message: 'User Details Not Found'});
+        res.status(404).json({success: false, message: 'User Details Not Found', err: err});
       }
 
       res.status(200).json({success: true, message: 'Update Successful'});
@@ -196,5 +203,47 @@ module.exports = {
      User.find({}, function(err, users) {
         res.json(users);
      });
+  },
+
+  postPhoto: function(req, res){
+    var fileName = '';
+    var size = '';
+    var tempPath;
+    var destPath = '';
+    var extension;
+    var imageName;
+    var destPath = '';
+    var inputStream;
+    var outputStream;
+    var form = new multiparty.Form();
+
+    form.on('error', function(err){
+      console.log('Error parsing form: ' + err.stack);
+    });
+    form.on('part', function(part){
+      if(!part.filename){
+        return;
+      }
+      size = part.byteCount;
+      fileName = part.filename;
+    });
+    form.on('file', function(name, file){
+      tempPath = file.path;
+      extension = file.path.substring(file.path.lastIndexOf('.'));
+      imageName = uuid.v4() + extension;
+      destPath = path.join(__dirname, '../../public/uploads/', imageName);
+      inputStream = fs.createReadStream(tempPath);
+      outputStream = fs.createWriteStream(destPath);
+      saveDestPath = destPath.split("public");
+      inputStream.pipe(outputStream);
+      inputStream.on('end', function(){
+        fs.unlinkSync(tempPath);
+        res.json({ imageName : imageName, dest: saveDestPath[1] });
+      });
+    });
+    form.on('close', function(){
+      console.log('Uploaded!!');
+    });
+    form.parse(req);
   }
 };

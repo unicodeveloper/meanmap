@@ -1,5 +1,4 @@
-var app = angular.module('meanmap', ['ngRoute','ngMessages','angularMoment','leaflet-directive','ui.bootstrap','appRoutes','ngSanitize','toastr','geocoder','ngLodash'])
-
+var app = angular.module('meanmap', ['ngRoute','ngMessages','angularMoment','ngFileUpload','leaflet-directive','ui.bootstrap','appRoutes','ngSanitize','toastr','geocoder','ngLodash'])
   .factory('authInterceptor', function($q, $location, $window){
     return {
       request: function(config){
@@ -17,16 +16,14 @@ var app = angular.module('meanmap', ['ngRoute','ngMessages','angularMoment','lea
         }
         return $q.reject(response);
       }
-     }
+     };
   })
-
   .config(function($httpProvider){
     $httpProvider.interceptors.push('authInterceptor');
   })
-
   .run(['$rootScope', '$location', function($rootScope, $location) {
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-      if($rootScope.currentUser == undefined  && next.requireAuth) {
+      if($rootScope.currentUser === undefined  && next.requireAuth) {
         $location.path( "/" );
       }
     });

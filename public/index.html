@@ -26,6 +26,8 @@
   <script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
   <script src="vendor/angular-animate/angular-animate.js"></script>
   <script src="vendor/angular-messages/angular-messages.min.js"></script>
+  <script src="vendor/ng-file-upload/ng-file-upload-shim.min.js"></script>
+  <script src="vendor/ng-file-upload/ng-file-upload.min.js"></script>
   <script src="vendor/angular-aria/angular-aria.js"></script>
   <script src="vendor/moment/moment.js"></script>
   <script src="vendor/angular-moment/angular-moment.js"></script>
@@ -42,12 +44,11 @@
   <script src="js/controllers/map.client.controller.js"></script>
   <script src="js/controllers/developers.client.controller.js"></script>
   <script src="js/controllers/profile.client.controller.js"></script>
+  <script src="js/controllers/contact.client.controller.js"></script>
+  <script src="js/services/contact.client.service.js"></script>
   <script src="js/services/auth.client.service.js"></script>
   <script src="js/services/user.client.service.js"></script>
   <script src="js/services/geocoder-service.js"></script>
-
-
-
 </head>
 <body>
 
@@ -69,11 +70,13 @@
             </ul>
             <ul class="menu" ng-show="isLoggedIn()">
               <li class="has-dropdown">
-                <a href="#"><img class="img-circle" src="http://www.gravatar.com/avatar/1097492785caf9ffeebffeb624202d8f?s=20"> PROSPER OTEMUYIWA
+                <a href="#">
+                Hi, {{ fullname }}
                  <span class="caret"></span>
+
                 </a>
                 <ul class="subnav">
-                  <li><a href="">My Profile</a></li>
+                  <li><a href="/account">My Profile</a></li>
                   <li><a href="/account/edit">Edit Profile</a></li>
                   <li class="divider"></li>
                   <li ng-show="isLoggedIn()"><a ng-click="logOut()" style="cursor:pointer;">Logout</a></li>

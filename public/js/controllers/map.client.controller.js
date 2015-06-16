@@ -1,8 +1,9 @@
 app.controller('MapController', ['$rootScope','$scope','$http','$location','$window','$localStorage','$routeParams','Auth','User','toastr','leafletData','Geocoder', function($rootScope,$scope,$http,$location,$window,$localStorage,$routeParams,Auth,User,toastr,leafletData,Geocoder) {
 
   User.getAllUsers().then( function(response){
-    $scope.allUsers = response.data;
-    console.log( $scope.allUsers);
+    $scope.allUsers  = response.data;
+    $scope.noOfUsers = $scope.allUsers.length;
+    console.log("length", $scope.allUsers.length);
     $scope.userData = [];
 
     angular.forEach($scope.allUsers, function(val, key){

@@ -6,6 +6,15 @@ module.exports = {
 
   sessionSecret: process.env.SESSION_SECRET,
 
+  mailOptions: {
+    service: 'Gmail',
+    port: 465,
+    auth: {
+      user: process.env.user,
+      pass: process.env.pass
+    }
+  },
+
   trello: {
     key: process.env.TRELLO_KEY,
     secret: process.env.TRELLO_SECRET

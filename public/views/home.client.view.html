@@ -38,14 +38,14 @@
   <section class="cta cta-6">
       <div class="container">
           <div class="row v-align-children">
-              <div class="col-md-8 col-sm-7">
-                  <h3>840 Mean Developers are on board..</h3>
+              <div class="col-md-8 col-sm-7" ng-controller="MapController">
+                  <h3>{{ noOfUsers }} Mean Developers are on board..</h3>
                   <p>Feel free to join the community.. It´s <strong>free</strong>!</p>
               </div>
 
-              <div class="col-md-4 col-sm-5 text-right">
+              <div class="col-md-4 col-sm-5 text-right" ng-controller="AuthController">
                   <a class="btn" href="page/about">More Info</a>
-                  <a class="btn btn-filled" href="user/create">Join Now</a>
+                  <a class="btn btn-filled" href="user/create" ng-hide="isLoggedIn()">Join Now</a>
               </div>
           </div>
       </div>
