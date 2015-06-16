@@ -1,11 +1,12 @@
-var User        = require('../models/user.server.model'),
+ var User       = require('../models/user.server.model'),
     jwt         = require('jsonwebtoken'),
     bluebird    = require('bluebird'),
     Q           = require('q'),
     fs          = bluebird.promisifyAll(require('fs')),
     multiparty  = require('multiparty'),
     path        = require('path'),
-    uuid        = require('node-uuid');
+    uuid        = require('node-uuid'),
+    cloudinary  = require('cloudinary');
 
 module.exports = {
   /**
@@ -228,17 +229,10 @@ module.exports = {
       fileName = part.filename;
     });
     form.on('file', function(name, file){
-      tempPath = file.path;
-      extension = file.path.substring(file.path.lastIndexOf('.'));
-      imageName = uuid.v4() + extension;
-      destPath = path.join(__dirname, '../../public/uploads/', imageName);
-      inputStream = fs.createReadStream(tempPath);
-      outputStream = fs.createWriteStream(destPath);
-      saveDestPath = destPath.split("public");
-      inputStream.pipe(outputStream);
-      inputStream.on('end', function(){
-        fs.unlinkSync(tempPath);
-        res.json({ imageName : imageName, dest: saveDestPath[1] });
+      tempPath     = file.path;
+      cloudinary.uploader.upload(tempPath, function(result){
+        var pixUrl = result.url;
+        res.json({ dest: pixUrl });
       });
     });
     form.on('close', function(){
