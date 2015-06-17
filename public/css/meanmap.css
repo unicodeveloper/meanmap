@@ -8083,7 +8083,7 @@ nav ul li:hover .subnav .subnav {
   -moz-transition: all 0.3s ease;
 }
 .nav-1 .navbar {
-  height: 80px;
+  height: 60px;
   max-height: 80px;
   background: #fff;
   margin: 0;
@@ -8096,7 +8096,8 @@ nav ul li:hover .subnav .subnav {
   margin-top: 28px;
 }
 .nav-1 .menu {
-  margin-top: 26px;
+  margin-top: 20px;
+  font-weight: bold;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
