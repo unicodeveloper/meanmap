@@ -4,11 +4,9 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
     return Auth.isLoggedIn();
   };
 
-   if( $window.sessionStorage["users"] ){
+  if($window.sessionStorage["users"]){
     $rootScope.currentUser = JSON.parse($window.sessionStorage["users"]);
   }
-
-
 
   $scope.logOut = function(){
     Auth.logOutUser();
@@ -53,17 +51,8 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
     Auth.loginUser(username, password, function(success, data) {
       if(success) {
         $window.sessionStorage["token"] = data.token;
-        console.log("data user", data.user[0]);
         $window.sessionStorage["users"] = JSON.stringify(data.user[0]);
         $rootScope.currentUser = JSON.parse($window.sessionStorage["users"]);
-        console.log("Rootscope fullname", $rootScope.currentUser.fullname);
-        $scope.userData = data.user[0];
-        $scope.userAvatar = data.user[0].user_avatar;
-        console.log("Scope Object", $scope.userData);
-        $scope.email = data.user[0].email;
-        $rootScope.fullname = data.user[0].fullname;
-
-        $rootScope.$apply();
         toastr.success('Login Successful', { timeOut: 1000 });
         $location.path('/account');
       }
