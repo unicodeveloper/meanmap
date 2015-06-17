@@ -9,6 +9,7 @@ app.controller('MapController', ['$rootScope','$scope','$http','$location','$win
     angular.forEach($scope.allUsers, function(val, key){
       var info = {};
       $scope.markers = {};
+
       info.username = val.username;
       info.address  = val.address;
       $scope.userData.push(info);
@@ -24,12 +25,28 @@ app.controller('MapController', ['$rootScope','$scope','$http','$location','$win
     });
   });
 
+  $scope.center = {
+    lat: 6.523276500000000000,
+    lng: 3.540790900000047300,
+    zoom: 2
+  };
+
   $scope.layers = {
     baselayers: {
-      osm: {
-        name: 'OpenStreetMap',
-        url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
-        type: 'xyz'
+       googleTerrain:{
+          name: 'Google Terrain',
+          layerType: 'TERRAIN',
+          type: 'google'
+       },
+       googleHybrid: {
+          name: 'Google Hybrid',
+          layerType: 'HYBRID',
+          type: 'google'
+       },
+      googleRoadmap: {
+          name: 'Google Streets',
+          layerType: 'ROADMAP',
+          type: 'google'
       }
     }
   };
@@ -54,7 +71,4 @@ app.controller('MapController', ['$rootScope','$scope','$http','$location','$win
     }
   });
 
-  leafletData.getMap().then(function(map) {
-    L.GeoIP.centerMapOnPosition(map, 15);
-  });
 }]);
