@@ -1,5 +1,5 @@
 app.controller('UserController', ['$rootScope','$scope','$http','$location','$window','$localStorage','Upload','Auth','User','toastr','leafletData','Geocoder', function($rootScope,$scope,$http,$location,$window,$localStorage,Upload,Auth,User,toastr,leafletData,Geocoder) {
-  var userId =  $rootScope.currentUser[0]._id;
+  var userId =  $rootScope.currentUser._id;
   User.getProfile(userId, function(success, data){
     if(success){
       $scope.userDetails = data.user;
@@ -95,7 +95,7 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
 
 
 
-  Geocoder.geocodeAddress($rootScope.currentUser[0].address).then( function(response){
+  Geocoder.geocodeAddress($rootScope.currentUser.address).then( function(response){
     angular.extend($scope, {
 
       markers: {

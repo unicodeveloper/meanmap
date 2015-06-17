@@ -73,7 +73,8 @@
             <ul class="menu" ng-show="isLoggedIn()">
               <li class="has-dropdown">
                 <a href="#">
-                Hi, {{ fullname }}
+                <img class="header-img-rounded" src="{{ currentUser.user_avatar }}">
+                {{ currentUser.fullname }}
                  <span class="caret"></span>
 
                 </a>
