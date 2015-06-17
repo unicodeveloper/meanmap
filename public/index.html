@@ -47,9 +47,11 @@
   <script src="js/controllers/developers.client.controller.js"></script>
   <script src="js/controllers/profile.client.controller.js"></script>
   <script src="js/controllers/contact.client.controller.js"></script>
+  <script src="js/controllers/newsletter.client.controller.js"></script>
   <script src="js/services/contact.client.service.js"></script>
   <script src="js/services/auth.client.service.js"></script>
   <script src="js/services/user.client.service.js"></script>
+  <script src="js/services/newsletter.client.service.js"></script>
   <script src="js/services/geocoder-service.js"></script>
 </head>
 <body>
@@ -129,15 +131,14 @@
 <footer class="footer footer-6">
   <div class="container">
     <div class="row">
-        <div class="col-md-8 col-sm-6">
+        <div class="col-md-8 col-sm-6" ng-controller="NewsletterController">
             <a href="#">
                 <img alt="Logo" src="img/google-pushpin-md.png">
             </a>
-            <form class="form-email" data-success="Thanks for your submission, we will be in touch shortly." data-error="Please fill all fields correctly.">
-                <input type="text" name="Email Address" class="validate-email signup-email-field" placeholder="Newsletter Signup">
+            <form class="form-email" ng-submit="subscribeUser()" name="subscribeForm">
+                <input type="email" name="email" ng-model="newsletter.email" class="validate-email signup-email-field" placeholder="Newsletter Signup" required>
+
                 <input type="submit" value="Go">
-                <iframe srcdoc="<!-- Begin MailChimp Signup Form --> <link href=&quot;//cdn-images.mailchimp.com/embedcode/classic-081711.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;> <style type=&quot;text/css&quot;>   #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }   /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */ </style> <div id=&quot;mc_embed_signup&quot;> <form action=&quot;//avanalabs.us9.list-manage.com/subscribe/post?u=818e71b0a69746cd0b61b923d&amp;amp;id=6f7709c474&quot; method=&quot;post&quot; id=&quot;mc-embedded-subscribe-form&quot; name=&quot;mc-embedded-subscribe-form&quot; class=&quot;validate&quot; target=&quot;_blank&quot; novalidate>     <div id=&quot;mc_embed_signup_scroll&quot;>   <h2>Subscribe to our mailing list</h2> <div class=&quot;indicates-required&quot;><span class=&quot;asterisk&quot;>*</span> indicates required</div> <div class=&quot;mc-field-group&quot;>  <label for=&quot;mce-EMAIL&quot;>Email Address  <span class=&quot;asterisk&quot;>*</span> </label>  <input type=&quot;email&quot; value=&quot;&quot; name=&quot;EMAIL&quot; class=&quot;required email&quot; id=&quot;mce-EMAIL&quot;> </div> <div class=&quot;mc-field-group&quot;>  <label for=&quot;mce-FNAME&quot;>First Name </label>  <input type=&quot;text&quot; value=&quot;&quot; name=&quot;FNAME&quot; class=&quot;&quot; id=&quot;mce-FNAME&quot;> </div> <div class=&quot;mc-field-group&quot;>   <label for=&quot;mce-LNAME&quot;>Last Name </label>   <input type=&quot;text&quot; value=&quot;&quot; name=&quot;LNAME&quot; class=&quot;&quot; id=&quot;mce-LNAME&quot;> </div>  <div id=&quot;mce-responses&quot; class=&quot;clear&quot;>    <div class=&quot;response&quot; id=&quot;mce-error-response&quot; style=&quot;display:none&quot;></div>     <div class=&quot;response&quot; id=&quot;mce-success-response&quot; style=&quot;display:none&quot;></div>   </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->     <div style=&quot;position: absolute; left: -5000px;&quot;><input type=&quot;text&quot; name=&quot;b_818e71b0a69746cd0b61b923d_6f7709c474&quot; tabindex=&quot;-1&quot; value=&quot;&quot;></div>     <div class=&quot;clear&quot;><input type=&quot;submit&quot; value=&quot;Subscribe&quot; name=&quot;subscribe&quot; id=&quot;mc-embedded-subscribe&quot; class=&quot;button&quot;></div>     </div> </form> </div> <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script> <!--End mc_embed_signup-->" class="mail-list-form">
-                </iframe>
             </form>
         </div>
 

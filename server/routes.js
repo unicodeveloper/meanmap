@@ -1,5 +1,6 @@
 var User        = require('./controllers/user.server.controller'),
     Contact     = require('./controllers/contact.server.controller'),
+    Newsletter  = require('./controllers/newsletter.server.controller'),
     jwt         = require('jsonwebtoken'),
     secrets     = require('../config/secrets'),
     verifyToken = require('../config/tokenMiddleware'),
@@ -20,6 +21,7 @@ module.exports = function(app) {
 
   app.post('/api/file/upload', User.postPhoto);
   app.post('/api/contact', Contact.sendMessage);
+  app.post('/api/newsletter', Newsletter.subscribe);
 
 
 };

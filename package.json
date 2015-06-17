@@ -40,6 +40,8 @@
     "fs": "0.0.2",
     "gravatar": "^1.1.1",
     "jsonwebtoken": "^5.0.1",
+    "mailchimp": "^1.1.0",
+    "mailchimp-api": "^2.0.7",
     "mongoose": "^4.0.5",
     "morgan": "^1.5.3",
     "multiparty": "^4.1.2",

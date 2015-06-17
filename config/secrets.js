@@ -6,6 +6,11 @@ module.exports = {
 
   sessionSecret: process.env.SESSION_SECRET,
 
+  mailChimp: {
+    listID: process.env.LISTID,
+    apiKey: process.env.MAILCHIMP_KEY
+  },
+
   mailOptions: {
     service: 'Gmail',
     port: 465,
