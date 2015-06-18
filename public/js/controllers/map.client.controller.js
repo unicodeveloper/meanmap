@@ -3,7 +3,6 @@ app.controller('MapController', ['$rootScope','$scope','$http','$location','$win
   User.getAllUsers().then( function(response){
     $scope.allUsers  = response.data;
     $scope.noOfUsers = $scope.allUsers.length;
-    console.log("length", $scope.allUsers.length);
     $scope.userData = [];
 
     angular.forEach($scope.allUsers, function(val, key){
@@ -16,6 +15,7 @@ app.controller('MapController', ['$rootScope','$scope','$http','$location','$win
       Geocoder.geocodeAddress(info.address).then( function(response){
         var value = {};
         $scope.markers[info.username] = {};
+        $scope.markers[info.username].layer     = 'realworld';
         $scope.markers[info.username].lat       = response.lat;
         $scope.markers[info.username].lng       = response.lng;
         $scope.markers[info.username].message   = info.username;
@@ -30,6 +30,17 @@ app.controller('MapController', ['$rootScope','$scope','$http','$location','$win
     lng: 3.540790900000047300,
     zoom: 2
   };
+
+  $scope.events = {
+    map: {
+      enable: ['moveend', 'popupopen'],
+      logic: 'emit'
+    },
+    marker: {
+      enable: [],
+      logic: 'emit'
+    }
+  },
 
   $scope.layers = {
     baselayers: {
@@ -47,6 +58,13 @@ app.controller('MapController', ['$rootScope','$scope','$http','$location','$win
           name: 'Google Streets',
           layerType: 'ROADMAP',
           type: 'google'
+      }
+    },
+    overlays: {
+      realworld: {
+          name: "Real world data",
+          type: "markercluster",
+          visible: true
       }
     }
   };

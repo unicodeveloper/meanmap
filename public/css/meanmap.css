@@ -10946,6 +10946,14 @@ nav.dismiss-active {
   }
 }
 /*!---------- FOOTER AREA ----------*/
+.signup-email-field{
+  border:0px solid black;
+  margin-right: 0px;
+  border-radius: 0px;
+}
+.subscribe-btn{
+  margin-top:10px;
+}
 #copyright{
   background:#AA0036;
   color:#fff;

@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="vendor/angular-toastr/dist/angular-toastr.css">
   <link rel="stylesheet" href="vendor/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" href="vendor/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="vendor/leaflet.markercluster/dist/MarkerCluster.Default.css" />
   <link rel="stylesheet" href="vendor/angular-loading-bar/build/loading-bar.min.css">
 
   <!-- JS -->
@@ -38,6 +40,7 @@
   <script src="vendor/moment/moment.js"></script>
   <script src="vendor/angular-moment/angular-moment.js"></script>
   <script src="vendor/leaflet/dist/leaflet.js"></script>
+  <script src="vendor/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="vendor/leaflet-plugins/layer/tile/Google.js"></script>
   <script src="vendor/angular-leaflet/dist/angular-leaflet-directive.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -143,7 +146,7 @@
         <div ng-controller="NewsletterController">
           <form class="form-email" ng-submit="subscribeUser()" name="subscribeForm">
             <input type="email" name="email" ng-model="newsletter.email" class="validate-email signup-email-field" placeholder="e.g johndoe@gmail.com" required>
-            <input type="submit" value="Subscribe">
+            <input type="submit" value="Subscribe" class="subscribe-btn">
           </form>
         </div>
 
