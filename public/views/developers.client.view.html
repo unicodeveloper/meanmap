@@ -2,16 +2,24 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 text-center">
-            <h4>List of Mean Stack Developers all over the world</h4>
+            <h4>MEAN STACK DEVELOPERS ON THE PLANET</h4>
         </div>
       </div>
 
       <div class="row" ng-controller="DeveloperController">
         <br>
-          <div ng-repeat="dev in allUsers" class="col-md-1 col-sm-6 text-center feature">
-            <a href="/mean-developers/{{ dev.username }}">
-            <img class="img-rounded" alt="{{ dev.username }}" src="{{ dev.user_avatar }}">
-            </a>
+          <div class="span10 team-profile" ng-repeat="dev in allUsers">
+            <div style='text-align:center;'>
+              <a href="/mean-developers/{{ dev.username }}">
+                <img src="{{ dev.user_avatar }}" alt="{{dev.fullname}}">
+              </a>
+            </div>
+            <div class="profile-name grid3">{{ dev.username }}</div>
+            <ul class="profile-social-icons">
+              <li><a href="{{dev.twitter_handle || '#'}}"><i class="fa fa-twitter-square"></i></a></li>
+              <li><a href="{{dev.github_profile || '#'}}"><i class="fa fa-github-square">
+              </i></a></li>
+            </ul>
           </div>
       </div>
 </section>

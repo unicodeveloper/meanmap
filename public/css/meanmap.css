@@ -7314,6 +7314,59 @@ p.text-white a {
     font-weight: normal;
   }
 }
+.team-profile{
+  background-color:#f7f7f7;
+  border-bottom:1px solid #AA0036;
+  margin:15px 0px 35px 0px;
+  position:relative
+}
+.team-profile img{
+  margin-bottom:10px;
+  width:100%;
+}
+.team-profile .profile-name{
+  font-family:'Montserrat', 'Trebuchet MS', sans-serif;
+  font-size:12px;
+  margin:0 10px;
+  padding-bottom:2px;
+  letter-spacing:1px;
+  line-height:1.2;
+  text-transform:uppercase
+}
+.team-profile .profile-name.grid2{
+  font-size:13px;
+}
+.team-profile .profile-job{
+  font-family:'Montserrat', 'Trebuchet MS', sans-serif;
+  font-size:11px;
+  color:#909090;
+  margin:0 10px 0px 10px;
+  text-transform:uppercase
+}
+.team-profile .profile-job.grid2{
+  font-size:10px
+}
+.team-profile .profile-desc{
+  font-size:12px;
+  margin:0 10px 23px 10px
+}
+.team-profile .profile-social-icons{
+  margin:15px 0px 0px 10px;
+  position:relative
+}
+.team-profile .profile-social-icons li{
+  display:inline-block
+}
+.team-profile .profile-social-icons li a{
+  font-family:'Web Symbols', sans-serif;
+  font-size:15px;
+  color:#939aa2;
+  border:none
+}
+.team-profile .profile-social-icons li a:hover{
+  color:#AA0036
+}
+
 .leader {
   font-size: 32px;
   line-height: 1.4;
@@ -8959,7 +9012,7 @@ nav.dismiss-active {
     height: 110px;
     padding: 20px 0;
     overflow: hidden;
-    background: #e24548;
+    background: #aa0036;
 }
 
 @media all and (max-width: 767px) {
@@ -10878,6 +10931,12 @@ nav.dismiss-active {
   width: 370px;
   }
 }
+@media (min-width: 1200px){
+.span10 {
+  width: 150px;
+  }
+}
+
 
 @media (min-width: 1200px){
   [class*='span'] {
