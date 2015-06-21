@@ -16,6 +16,7 @@
 
   <title>Meanmap :: Online directory of Mean Stack Developers</title>
   <link rel="stylesheet" href="css/meanmap.css">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="vendor/angular-toastr/dist/angular-toastr.css">
   <link rel="stylesheet" href="vendor/leaflet/dist/leaflet.css">
@@ -95,7 +96,6 @@
           <div class="col-md-3 text-right col-sm-6 col-md-push-6 col-xs-8" ng-controller="AuthController">
            <ul class="menu" ng-hide="isLoggedIn()">
               <li ng-hide="isLoggedIn()"><a href="/auth/login">LOGIN</a></li>
-              <li ng-hide="isLoggedIn()"><a href="/user/create">REGISTER</a></li>
             </ul>
             <ul class="menu" ng-show="isLoggedIn()">
               <li class="has-dropdown">

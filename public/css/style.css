@@ -1,0 +1,9 @@
+.error-e{
+  border: 1px solid red;
+}
+.error-o{
+  border: 0px solid red;
+}
+.has-error{
+  color: #e81e25;
+}

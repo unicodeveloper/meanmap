@@ -6,7 +6,7 @@
           <label for="email">Email:</label>
           <input class="form-control" name="email" type="email" ng-model="user.email" id="email" placeholder="e.g johndoe@gmail.com" required>
           <div class="help-block text-danger" ng-if="loginForm.email.$dirty" ng-messages="loginForm.email.$error">
-            <div ng-message="required">Email is required.</div>
+            <div ng-message="required" class="has-error">Email is required.</div>
           </div>
         </div>
 
@@ -14,7 +14,7 @@
           <label for="password">Password:</label>
           <input class="form-control" name="password" type="password" ng-model="user.password" value="" id="password" placeholder="password" required>
           <div class="help-block text-danger" ng-if="loginForm.password.$dirty" ng-messages="loginForm.password.$error">
-            <div ng-message="required">Password is required.</div>
+            <div ng-message="required" class="has-error">Password is required.</div>
           </div>
         </div>
 
@@ -22,11 +22,16 @@
             <div class="form-group">
               <button class="form-control btn btn-block" type="submit" ng-disabled="loginForm.$invalid">Sign in</button>
             </div>
+
+            <div class="form-group col-lg-12">
+              <span style="color:#aa0036;">Don't have an Account? <a href="/user/create" style="color:#aa0036;">REGISTER HERE</a></span>
+            </div>
+
             <div class="form-group col-lg-6">
               <a href="/auth/new_password" class="form-control btn btn-block">Reset Password</a>
             </div>
         </div>
-      </form>
+
     </div>
 
     <div class="col-md-6">

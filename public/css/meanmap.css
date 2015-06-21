@@ -1890,6 +1890,7 @@ select[multiple].input-lg {
 .has-warning .form-control-feedback {
   color: #8a6d3b;
 }
+
 .has-error .help-block,
 .has-error .control-label,
 .has-error .radio,
