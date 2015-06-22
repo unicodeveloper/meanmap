@@ -83,8 +83,8 @@
     "Learn By Doing, Learn More By Teaching. => Prosper Otemuyiwa."
   -->
 <div class="nav-container">
-  <nav class="nav-1">
-    <div class="navbar" >
+  <nav class="nav-1 ">
+    <div class="navbar">
       <div class="container">
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-4">
@@ -95,6 +95,7 @@
 
           <div class="col-md-3 text-right col-sm-6 col-md-push-6 col-xs-8" ng-controller="AuthController">
            <ul class="menu" ng-hide="isLoggedIn()">
+              <li ng-hide="isLoggedIn()"><a href="/user/create">CREATE ACCOUNT</a></li>
               <li ng-hide="isLoggedIn()"><a href="/auth/login">LOGIN</a></li>
             </ul>
             <ul class="menu" ng-show="isLoggedIn()">

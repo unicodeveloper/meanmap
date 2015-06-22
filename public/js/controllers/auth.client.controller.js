@@ -4,6 +4,19 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
     return Auth.isLoggedIn();
   };
 
+  $scope.resetPassword = function(){
+    var userEmail = $scope.user.email;
+    Auth.resetPassword({ email: userEmail}, function(success, data){
+      if(success){
+        $window.sessionStorage["pwdhash"] = data.user.pwdResetHash;
+        toastr.success("Please check your Email and follow the instructions there", {timeOut: 2000});
+      }
+      else{
+        toastr.error(data.message, 'Error', { timeOut: 2000 });
+      }
+    });
+  };
+
   if($window.sessionStorage["users"]){
     $rootScope.currentUser = JSON.parse($window.sessionStorage["users"]);
   }

@@ -7,7 +7,9 @@
     path        = require('path'),
     uuid        = require('node-uuid'),
     cloudinary  = require('cloudinary'),
-    gravatar    = require('gravatar');
+    gravatar    = require('gravatar'),
+    nodemailer  = require('nodemailer'),
+    secrets     = require('../../config/secrets');
 
 module.exports = {
   /**
@@ -67,6 +69,7 @@ module.exports = {
       }
 
       var userDetails = {};
+
       userDetails.email           = user.email;
       userDetails.fullname        = user.fullname;
       userDetails.username        = user.username;
@@ -79,6 +82,7 @@ module.exports = {
       userDetails.website         = user.website;
       userDetails.twitter_handle  = user.twitter_handle;
       userDetails.registered      = user.registered_on;
+
 
       res.json({success: true, user: userDetails});
       next();
@@ -118,6 +122,68 @@ module.exports = {
         userDetails.registered      = user[0].registered_on;
 
         res.json({success: true, user: userDetails});
+      }
+      next();
+    });
+  },
+
+  /**
+   * [getEachUserByEmail description]
+   * @param  {[type]}   req  [description]
+   * @param  {[type]}   res  [description]
+   * @param  {Function} next [description]
+   * @return {[type]}        [description]
+   */
+  resetUserPassword: function(req, res, next){
+    var userEmail = req.body.email;
+
+    User.find({email: userEmail}, function (err, user) {
+      if(err) {
+        return res.status(404).json({ err: err , req: req.body});
+      }
+
+      if(user.length === 0){
+        return res.json({ success: false, message: 'User not found.' });
+      }
+      else if(user.length == 1) {
+        var userDetails = {};
+        var hash = uuid.v4();
+        userDetails.email           = user[0].email;
+        userDetails.username        = user[0].username;
+        userDetails.pwdResetHash    = hash;
+
+        var transporter = nodemailer.createTransport(secrets.mailOptions);
+        var senderEmail = 'admin@meanmap.com';
+        var emailTo     =  userDetails.email;
+        var subject     = 'Password Reset From meanmap.com';
+        var text        = 'check your message';
+
+        var mailOptions = {
+          from:    senderEmail,
+          to:      emailTo,
+          subject: subject,
+          text:    text
+        };
+
+        console.log( "Almost sending...");
+        // Send the email
+        transporter.sendMail(mailOptions, function(err, info){
+          if(err){
+            res.status(500).json({
+              "message": "Message sending failed",
+              "error": err
+            });
+          }
+          else{
+            console.log("iT WENT");
+            //return res.json({ success: true, message: "Message sent successfully", response: info });
+
+          }
+        });
+
+        transporter.close();
+         return  res.status(200).json({success: true, user: userDetails});
+
       }
       next();
     });

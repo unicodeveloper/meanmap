@@ -30,6 +30,17 @@ app.factory('Auth', ['$http','$q', '$window', function($http, $q, $window) {
     logOutUser: function(){
       delete $window.sessionStorage["users"];
       delete $window.sessionStorage["token"];
+    },
+
+    resetPassword: function(email,cb){
+      $http.post('/api/password', email).then(function(response){
+        if(response.data.success){
+          cb(true, response.data);
+        }
+        else {
+          cb(false, response.data);
+        }
+      });
     }
   };
 }]);

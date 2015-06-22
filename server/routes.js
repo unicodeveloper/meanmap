@@ -14,6 +14,7 @@ module.exports = function(app) {
   app.post('/api/register', User.registerUser);
 
   app.get('/api/users',            User.getAllUsers);
+
   app.get('/api/user/:user_id',    User.getEachUserDetails);
   app.get('/api/users/:username',   User.getEachUserByUsername);
   app.put('/api/user/:user_id',    User.updateEachUserDetails);
@@ -22,6 +23,7 @@ module.exports = function(app) {
   app.post('/api/file/upload', User.postPhoto);
   app.post('/api/contact', Contact.sendMessage);
   app.post('/api/newsletter', Newsletter.subscribe);
+  app.post('/api/password', User.resetUserPassword);
 
 
 };
