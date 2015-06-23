@@ -32,6 +32,7 @@ module.exports = {
       }
     });
 
+    // Free Up Resources After Execution
     transporter.close();
   }
 };
