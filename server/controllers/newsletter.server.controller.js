@@ -7,7 +7,6 @@ var nodemailer    = require('nodemailer'),
 module.exports = {
 
   subscribe: function(req, res, next){
-
     var email  = req.body.email;
     var listID = secrets.mailChimp.listID;
     var mcReq  = {

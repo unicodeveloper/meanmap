@@ -12,7 +12,7 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
     }
   });
 
-  console.log( userId);
+  console.log(userId);
 
   $scope.editProfile = function(){
   var fullname      = $scope.userDetails.fullname,

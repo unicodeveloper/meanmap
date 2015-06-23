@@ -59,6 +59,14 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         templateUrl: './views/reset-password.view.html',
         requireAuth: false
     })
+    .when('/jobs', {
+        templateUrl: './views/jobs.client.view.html',
+        requireAuth: false
+    })
+    .when('/projects', {
+        templateUrl: './views/projects.client.view.html',
+        requireAuth: false
+    })
 
     .otherwise({ redirectTo: '/' });
 
