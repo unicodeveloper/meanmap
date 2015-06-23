@@ -7,9 +7,9 @@ module.exports = {
   sendMessage: function(req, res, next){
     var transporter = nodemailer.createTransport(secrets.mailOptions);
     var fullname    = req.body.name.toLowerCase();
-    var senderEmail = "goodness@gmail.com";
+    var senderEmail = req.body.email.toLowerCase();
     var emailTo     = 'prosperotemuyiwa@gmail.com';
-    var subject     = 'Enquiry From meanmap.com';
+    var subject     = 'Enquiry From meanmap.com by ' + senderEmail;
     var text        = req.body.message;
 
     var mailOptions = {
