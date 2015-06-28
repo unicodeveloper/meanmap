@@ -5,7 +5,6 @@ var nodemailer    = require('nodemailer'),
     MC            = new MCapi.Mailchimp(secrets.mailChimp.apiKey);
 
 module.exports = {
-
   subscribe: function(req, res, next){
     var email  = req.body.email;
     var listID = secrets.mailChimp.listID;
