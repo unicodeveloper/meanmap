@@ -28,4 +28,5 @@ module.exports = function(app) {
   app.post('/api/project', Project.shareProject);
   app.get('/api/project',  Project.getAllProjects);
   app.get('/api/projects/:projectSlug', Project.getEachProjectDetail);
+  app.delete('/api/project/:id', verifyToken, Project.deleteEachProject);
 };
