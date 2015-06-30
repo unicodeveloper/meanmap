@@ -67,6 +67,10 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         templateUrl: './views/projects.client.view.html',
         requireAuth: false
     })
+    .when('/projects/featured/:projectSlug', {
+        templateUrl: './views/project-detail.client.view.html',
+        requireAuth: false
+    })
     .when('/elysium', {
         templateUrl: './views/elysium.client.view.html',
         requireAuth: false

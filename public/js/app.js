@@ -5,7 +5,7 @@ var app = angular.module('meanmap', ['ngRoute','ngStorage','ngMessages','angular
         config.headers = config.headers || {};
 
         if($window.sessionStorage["token"]){
-          config.headers.token = $window.sessionStorage["token"];
+          config.headers["x-access-token"] = $window.sessionStorage["token"];
         }
         return config;
       },

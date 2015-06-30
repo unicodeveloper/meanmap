@@ -165,7 +165,6 @@ module.exports = {
           text:    text
         };
 
-        console.log( "Almost sending...");
         // Send the email
         transporter.sendMail(mailOptions, function(err, info){
           if(err){
@@ -182,8 +181,7 @@ module.exports = {
         });
 
         transporter.close();
-         return  res.status(200).json({success: true, user: userDetails});
-
+        return  res.status(200).json({success: true, user: userDetails});
       }
       next();
     });

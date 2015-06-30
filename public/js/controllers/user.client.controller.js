@@ -1,5 +1,7 @@
-app.controller('UserController', ['$rootScope','$scope','$http','$location','$window','$localStorage','Upload','Auth','User','toastr','leafletData','Geocoder', function($rootScope,$scope,$http,$location,$window,$localStorage,Upload,Auth,User,toastr,leafletData,Geocoder) {
+app.controller('UserController', ['$rootScope','$scope','$http','$location','$window','$localStorage','$modal','$log','Upload','Auth','User','Project','toastr','leafletData','Geocoder', function($rootScope,$scope,$http,$location,$window,$localStorage,$modal,$log,Upload,Auth,User,Project,toastr,leafletData,Geocoder) {
+
   var userId =  $rootScope.currentUser._id;
+
   User.getProfile(userId, function(success, data){
     if(success){
       $scope.userDetails = data.user;
@@ -12,8 +14,6 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
     }
   });
 
-  console.log(userId);
-
   $scope.editProfile = function(){
   var fullname      = $scope.userDetails.fullname,
     website         = $scope.userDetails.website || '',
@@ -23,7 +23,6 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
     bio             = $scope.userDetails.bio,
     twitter_handle  = $scope.userDetails.twitter_handle;
 
-    $scope.username = 'prosper';
     $scope.$watch('files', function() {
       $scope.upload($scope.files, function(data){
         var profile_image = data;
@@ -31,10 +30,8 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
         User.updateUserAvatar(userId, { user_avatar: profile_image }, function(success, data){
           if(success){
             toastr.success(data.message, { timeOut: 1000 });
-            console.log( data );
           }
           else{
-            console.log( data );
             toastr.error("Error occurred. Update Failed", 'Error', { timeOut: 2000 });
           }
         });
@@ -63,8 +60,6 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
       }
     };
 
-
-
     var userProfile =  {
       fullname: fullname,
       website:  website,
@@ -74,15 +69,12 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
       github_profile: githubProfile,
       twitter_handle: twitter_handle
     };
-    console.log("UserProfile, ", userProfile);
 
     User.updateEachUserDetails(userId, userProfile, function(success, data){
       if(success){
         toastr.success(data.message, { timeOut: 1000 });
-        console.log( data );
       }
       else{
-        console.log( data );
         toastr.error("Error occurred. Update Failed", 'Error', { timeOut: 2000 });
       }
     });
@@ -90,10 +82,7 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
 
   User.getAllUsers().then( function(response){
     $scope.allUsers = response.data;
-    console.log("No of users", $scope.allUsers.length );
   });
-
-
 
   Geocoder.geocodeAddress($rootScope.currentUser.address).then( function(response){
     angular.extend($scope, {
@@ -126,4 +115,27 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
     L.GeoIP.centerMapOnPosition(map, 15);
   });
 
+
+  $scope.animationsEnabled = true;
+
+  $scope.clickToOpen = function (size) {
+    var modalScope = $rootScope.$new();
+    modalScope.modalInstance = $modal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: '../../views/create-project.client.view.html',
+      controller: 'ProjectController',
+      size: size,
+      scope: modalScope
+    });
+
+    modalScope.modalInstance.result.then(function (selectedItem) {
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
 }]);

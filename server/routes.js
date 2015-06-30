@@ -1,6 +1,7 @@
 var User        = require('./controllers/user.server.controller'),
     Contact     = require('./controllers/contact.server.controller'),
     Newsletter  = require('./controllers/newsletter.server.controller'),
+    Project     = require('./controllers/project.server.controller'),
     jwt         = require('jsonwebtoken'),
     secrets     = require('../config/secrets'),
     verifyToken = require('../config/tokenMiddleware'),
@@ -23,4 +24,8 @@ module.exports = function(app) {
   app.post('/api/contact',     Contact.sendMessage);
   app.post('/api/newsletter',  Newsletter.subscribe);
   app.post('/api/password',    User.resetUserPassword);
+
+  app.post('/api/project', Project.shareProject);
+  app.get('/api/project',  Project.getAllProjects);
+  app.get('/api/projects/:projectSlug', Project.getEachProjectDetail);
 };

@@ -1,12 +1,29 @@
 <section>
-  <div class="container">
-    <div class="row">
+  <div class="container" >
+
+    <div class="row" style="margin-bottom:15px;">
       <div class="col-sm-12 text-center">
         <h4>MEAN STACK PROJECTS IN SPACE</h4>
       </div>
     </div>
-    <div class="row">
 
+    <div class="row" ng-controller="ProjectController">
+      <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4" ng-repeat="project in allProjects">
+        <div class="thumbnail bootsnipp-thumb">
+          <div>
+            <p class="lead snipp-title text-center">
+              <a href="/projects/featured/{{ project.slug }}" style="text-transform:capitalize;">{{ project.name }}</a>
+            </p>
+          </div>
+          <a href="/projects/featured/{{ project.slug }}">
+            <img class="lazy" data-original="{{ project.snapshot }}" width="300" height="200" alt="{{ project.name }}" src="{{ project.snapshot }}" style="display: block;">
+          </a>
+          <div class="caption">
+            <p><a href="/projects/featured/{{ project.slug }}" class="btn btn-primary btn-lg btn-block" style="color:#fff;">View</a></p>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>

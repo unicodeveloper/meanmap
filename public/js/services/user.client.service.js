@@ -1,6 +1,5 @@
 app.factory('User', ['$http','$q', '$window', function($http, $q, $window) {
   return {
-
     isLoggedIn: function(){
       return ($window.sessionStorage["token"])? true : false;
     },
@@ -52,7 +51,6 @@ app.factory('User', ['$http','$q', '$window', function($http, $q, $window) {
     getAllUsers: function(){
       return $http.get('/api/users');
     },
-
 
     logOutUser: function(){
        delete $window.sessionStorage["users"];
