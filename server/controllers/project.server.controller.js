@@ -14,7 +14,7 @@ module.exports = {
       function(cb) {
         var projectUrl = req.body.url;
         var url = cloudinary.url( projectUrl,
-          { type: "url2png", crop: "fill", width: 300, height: 200, gravity: "north", sign_url: true });
+          { type: "url2png", secure: true, crop: "fill", width: 300, height: 200, gravity: "north", sign_url: true });
         console.log("url ", url);
         cb(null, url);
       },
