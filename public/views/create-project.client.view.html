@@ -14,7 +14,7 @@
           </div>
 
           <div class="form-group">
-            <label for="email">Project Url</label>
+            <label for="email">Project Url <em>( Append http(s):// )</em></label>
             <input class="form-control input-lg"  style="width:150%;" data-ng-model="project.url" placeholder="url e.g http://meanmap.com" name="url" type="url" id="url" required>
             <div class="help-block text-danger" data-ng-if="createProjectForm.url.$dirty" data-ng-messages="createProjectForm.url.$error">
               <div data-ng-message="required" class="has-error">Project Url is required.</div>
