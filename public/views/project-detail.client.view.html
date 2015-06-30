@@ -6,7 +6,7 @@
           <h3 class="header" style="text-transform:capitalize;">{{ projectDetails.name }}</h3>
           <br>
           <p>{{ projectDetails.description }}</p>
-          <span class="postedBy" style="font-style:italic;"> Added by  <a style="color:#aa0036;" href="/mean-developers/{{ projectDetails.postedBy }}">{{ projectDetails.postedBy }} </a></span>
+          <span class="postedBy" style="font-style:italic;"> Added by  <a style="color:#aa0036;" href="/mean-developers/{{ projectDetails.postedBy }}">@{{ projectDetails.postedBy }} </a></span>
 
           <dir-disqus disqus-shortname="meanmap" disqus-identifier="{{ projectDetails.id }}"
             disqus-title="{{ projectDetails.name }}"
