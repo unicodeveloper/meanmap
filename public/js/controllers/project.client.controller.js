@@ -48,7 +48,6 @@ app.controller('ProjectController', ['$rootScope','$scope','$http','$location','
   Project.getEachProjectDetails( $routeParams.projectSlug, function(success, data){
     if(success){
       $scope.projectDetails = data.project;
-      console.log("User Profile", data);
     }
   });
 
