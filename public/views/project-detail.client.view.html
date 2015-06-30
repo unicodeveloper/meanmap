@@ -7,6 +7,11 @@
           <br>
           <p>{{ projectDetails.description }}</p>
           <span class="postedBy" style="font-style:italic;"> Added by  <a style="color:#aa0036;" href="/mean-developers/{{ projectDetails.postedBy }}">{{ projectDetails.postedBy }} </a></span>
+
+          <dir-disqus disqus-shortname="meanmap" disqus-identifier="{{ projectDetails.id }}"
+            disqus-title="{{ projectDetails.name }}"
+            disqus-url="{{ projectDetails.url }}">
+          </dir-disqus>
         </div>
 
         <div class="col-sm-3 columns project-sidebar">

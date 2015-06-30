@@ -60,6 +60,7 @@ module.exports = {
       else if(project.length == 1) {
         var projectDetails = {};
         var project = project[0];
+        projectDetails.id             = project._id;
         projectDetails.name           = project.name;
         projectDetails.slug           = project.slug;
         projectDetails.description    = project.description;
