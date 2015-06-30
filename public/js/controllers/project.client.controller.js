@@ -51,7 +51,5 @@ app.controller('ProjectController', ['$rootScope','$scope','$http','$location','
     }
   });
 
-
-
 }]);
 
