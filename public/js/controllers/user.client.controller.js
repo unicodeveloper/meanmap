@@ -7,10 +7,6 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
       $scope.userDetails = data.user;
       $rootScope.fullname = data.user.fullname;
       $rootScope.username = data.user.username;
-      console.log("User Profile", data.user);
-    }
-    else{
-      console.log("Nothing Found", data);
     }
   });
 
@@ -41,7 +37,6 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
     $scope.upload = function(files, cb) {
       if(files && files.length) {
           var file = files[0];
-          console.log("upload now");
           return Upload.upload({
             url: 'api/file/upload',
             method: 'POST',
@@ -49,11 +44,8 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
           })
           .then(function(response){
             if( response.status == 200){
-              console.log("Destination", response.data.dest);
-              console.log(response.data.dest);
               cb(response.data.dest);
             }else{
-              console.log("Error in uploading file");
               toastr.error("There was an error in uploading the file", 'Error', { timeOut: 2000 });
             }
           });
