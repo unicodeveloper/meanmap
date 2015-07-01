@@ -11,7 +11,6 @@ var  express       = require('express'),
      route         = require('./server/routes'),
      passport      = require('passport');
 
-
 var port = process.env.PORT || 3000;
 
 /**
@@ -28,7 +27,9 @@ var app = express();
 /**
  * Express configuration.
  */
-if(process.env.NODE_ENV == 'production'){
+
+// Force HTTPS on heroku
+if(process.env.NODE_ENV === 'production'){
   app.enable('trust proxy');
   app.use (function (req, res, next) {
       if(req.secure) {
