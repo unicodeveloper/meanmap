@@ -313,9 +313,9 @@ img {
   border-radius: 6px;
 }
 .header-img-rounded{
-  border-radius: 6px;
-  width: 30px;
-  height: 30px;
+  border-radius: 25px;
+  width: 32px;
+  height: 32px;
 }
 .img-thumbnail {
   padding: 4px;
