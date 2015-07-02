@@ -1,4 +1,8 @@
-app.controller('AuthController', ['$rootScope','$scope','$http','$location','$window','Auth','toastr', function($rootScope, $scope, $http, $location,$window, Auth, toastr) {
+app.controller('AuthController', ['$rootScope','$scope','$http','$location','$window','$localStorage','$sessionStorage','Auth','User','toastr', function($rootScope,$scope,$http,$location,$window,$localStorage,$sessionStorage,Auth,User,toastr) {
+
+  if($localStorage.mean_user){
+    $rootScope.currentUser = $localStorage.mean_user;
+  }
 
   $scope.isLoggedIn = function(){
     return Auth.isLoggedIn();
@@ -8,7 +12,7 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
     var userEmail = $scope.user.email;
     Auth.resetPassword({ email: userEmail}, function(success, data){
       if(success){
-        $window.sessionStorage["pwdhash"] = data.user.pwdResetHash;
+        $sessionStorage.pwdhash = data.user.pwdResetHash;
         toastr.success("Please check your Email and follow the instructions there", {timeOut: 2000});
       }
       else{
@@ -17,12 +21,9 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
     });
   };
 
-  if($window.sessionStorage["users"]){
-    $rootScope.currentUser = JSON.parse($window.sessionStorage["users"]);
-  }
-
   $scope.logOut = function(){
     Auth.logOutUser();
+    $rootScope.currentUser = null;
     toastr.success('You are Logged Out', { timeOut: 1000 });
     $location.path('/');
   };
@@ -59,13 +60,17 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
   };
 
   $scope.logIn =  function(){
-    var username = $scope.user.email, password = $scope.user.password;
+    var credentials = {
+      email: $scope.user.email,
+      password: $scope.user.password
+    };
 
-    Auth.loginUser(username, password, function(success, data) {
+    Auth.loginUser(credentials, function(success, data) {
       if(success) {
-        $window.sessionStorage["token"] = data.token;
-        $window.sessionStorage["users"] = JSON.stringify(data.user[0]);
-        $rootScope.currentUser = JSON.parse($window.sessionStorage["users"]);
+        var user = data.user;
+        $localStorage.mean_token = data.token;
+        $localStorage.mean_user = user;
+        $rootScope.currentUser = $localStorage.mean_user;
         toastr.success('Login Successful', { timeOut: 1000 });
         $location.path('/account');
       }

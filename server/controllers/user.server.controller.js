@@ -9,6 +9,7 @@
     cloudinary  = require('cloudinary'),
     gravatar    = require('gravatar'),
     nodemailer  = require('nodemailer'),
+    _           = require('lodash'),
     secrets     = require('../../config/secrets');
 
 module.exports = {
@@ -70,6 +71,7 @@ module.exports = {
 
       var userDetails = {};
 
+      userDetails._id             = user._id;
       userDetails.email           = user.email;
       userDetails.fullname        = user.fullname;
       userDetails.username        = user.username;
@@ -176,7 +178,6 @@ module.exports = {
           else{
             console.log("iT WENT");
             //return res.json({ success: true, message: "Message sent successfully", response: info });
-
           }
         });
 
@@ -197,11 +198,10 @@ module.exports = {
   updateEachUserDetails: function(req, res, next){
     var userId      = req.params.user_id;
     var userDetails = req.body;
-    console.log( req.body);
 
     User.update({_id: userId}, userDetails, function (err) {
       if(err) {
-        res.status(404).json({success: false, message: 'User Details Not Found', err: err});
+        return res.status(404).json({success: false, message: 'User Details Not Found', err: err});
       }
 
       res.status(200).json({success: true, message: 'Update Successful'});
@@ -221,7 +221,7 @@ module.exports = {
 
     User.remove({_id: userId}, function (err, user) {
       if(err) {
-        res.status(404).json({success: false, message: 'User Details Not Found'});
+        return res.status(404).json({success: false, message: 'User Details Not Found'});
       }
 
       res.json({success: true, message: 'Delete Successful'});
@@ -238,31 +238,35 @@ module.exports = {
   authenticateUserByEmail: function(req, res){
     var user  = new User();
     var token = jwt.sign(user, secrets.sessionSecret, { expiresInMinutes: 1440 });
+    console.log( req.body );
 
     User.find({email: req.body.email}, function(err, user) {
       if(err){
-        res.status(500).json({ error: err });
+        return res.status(500).json({ error: err });
       }
 
       if(user.length === 0){
-        res.json({ success: false, message: 'Authentication failed. User not found.' });
+        return res.json({ success: false, message: 'Authentication failed. User not found.' });
       }
       else if(user.length == 1) {
         var users = new User();
         users.comparePassword(req.body.password, user[0].password, function(err, result){
 
           if(err){
-            res.status(500).json({ error: 'Server Error'});
+            return res.status(500).json({ error: 'Server Error'});
           }
 
+          var userObject = user[0];
+          var currUser   = _.pick(userObject, '_id', 'fullname', 'user_avatar');
+
           if(result){
-            res.json({
-              success: true,
-              user: user,
-              token: token
-            });
+            return res.json({
+                    success: true,
+                    user: currUser,
+                    token: token
+                  });
           } else {
-            res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+            return res.json({ success: false, message: 'Authentication failed. Wrong password.' });
           }
       });
     }});
@@ -276,7 +280,7 @@ module.exports = {
    */
   getAllUsers: function(req, res){
      User.find({}, function(err, users) {
-        res.json(users);
+        return res.json(users);
      });
   },
 

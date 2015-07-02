@@ -22,9 +22,9 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
     $scope.$watch('files', function() {
       $scope.upload($scope.files, function(data){
         var profile_image = data;
-        console.log("Profile image", profile_image);
         User.updateUserAvatar(userId, { user_avatar: profile_image }, function(success, data){
           if(success){
+            $localStorage.mean_user.user_avatar = profile_image;
             toastr.success(data.message, { timeOut: 1000 });
           }
           else{
@@ -64,6 +64,7 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
 
     User.updateEachUserDetails(userId, userProfile, function(success, data){
       if(success){
+        $localStorage.mean_user.fullname = userProfile.fullname;
         toastr.success(data.message, { timeOut: 1000 });
       }
       else{
