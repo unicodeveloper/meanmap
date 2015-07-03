@@ -115,10 +115,10 @@
                  <span class="caret"></span>
                 </a>
                 <ul class="subnav">
-                  <li><a href="/account">My Profile</a></li>
-                  <li><a href="/account/edit">Edit Profile</a></li>
+                  <li><a href="/account"><i class="fa fa-user"></i> My Profile</a></li>
+                  <li><a href="/account/edit"><i class="fa fa-pencil-square-o"></i> Edit Profile</a></li>
                   <li class="divider"></li>
-                  <li ng-show="isLoggedIn()"><a ng-click="logOut()" style="cursor:pointer;">Logout</a></li>
+                  <li ng-show="isLoggedIn()"><a ng-click="logOut()" style="cursor:pointer;"><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
               </li>
             </ul>
@@ -171,8 +171,8 @@
       <div class="span4">
         <h5>THE MEAN PLANET NEWSLETTER</h5>
         <div ng-controller="NewsletterController">
-          <form class="form-email" ng-submit="subscribeUser()" name="subscribeForm">
-            <input type="email" name="email" ng-model="newsletter.email" class="validate-email signup-email-field" placeholder="e.g busayo@gmail.com" required>
+          <form class="form-email" data-ng-submit="subscribeUser()" name="subscribeForm">
+            <input type="email" name="email" data-ng-model="newsletter.email" class="validate-email signup-email-field" placeholder="e.g busayo@gmail.com" required>
             <input type="submit" value="Subscribe" class="subscribe-btn">
           </form>
         </div>

@@ -19,12 +19,11 @@ module.exports = {
         cb(null, url);
       },
     ], function (err, result) {
-        console.log("New result ", result);
         var project = new Project();
         project.name = req.body.name;
         project.description = req.body.description;
         project.url = req.body.url;
-        project.slug = slug( req.body.name );
+        project.slug = slug(req.body.name);
         project.postedBy = req.body.postedBy;
         project.snapshot = result;
         project.save( function( err, projects){
@@ -47,9 +46,9 @@ module.exports = {
   },
 
   getEachProjectDetail: function(req, res, next){
-    var project = req.params.projectSlug;
+    var projectSlug = req.params.projectSlug;
 
-    Project.find({ slug: project }, function (err, project) {
+    Project.find({ slug: projectSlug }, function (err, project) {
       if(err) {
         res.status(404).json({ err: err });
       }
