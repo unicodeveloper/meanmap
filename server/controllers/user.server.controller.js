@@ -257,7 +257,7 @@ module.exports = {
           }
 
           var userObject = user[0];
-          var currUser   = _.pick(userObject, '_id', 'fullname', 'user_avatar');
+          var currUser   = _.pick(userObject, '_id', 'fullname', 'user_avatar', 'username');
 
           if(result){
             return res.json({
