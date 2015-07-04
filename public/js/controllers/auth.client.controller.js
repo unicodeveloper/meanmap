@@ -2,7 +2,6 @@ app.controller('AuthController', ['$rootScope','$scope','$http','$location','$wi
 
   if($localStorage.mean_user){
     $rootScope.currentUser = $localStorage.mean_user;
-    console.log("Current User ", $rootScope.currentUser );
   }
 
   $scope.isLoggedIn = function(){

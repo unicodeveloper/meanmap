@@ -13,6 +13,7 @@ var app = angular
               'toastr',
               'geocoder',
               'ngLodash',
+              'hc.marked',
               'angularUtils.directives.dirDisqus'])
   .factory('authInterceptor', function($q, $location, $window, $localStorage){
     return {
