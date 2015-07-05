@@ -18,7 +18,7 @@ app.controller('MapController', ['$rootScope','$scope','$http','$location','$win
         $scope.markers[info.username].layer     = 'realworld';
         $scope.markers[info.username].lat       = response.lat;
         $scope.markers[info.username].lng       = response.lng;
-        $scope.markers[info.username].message   = info.username;
+        $scope.markers[info.username].message   = "<a style='color:#e81e25;font-weight:bold;' href='mean-developers/" + info.username + "'/>@" + info.username + "</a>";
         $scope.markers[info.username].focus     = true;
         $scope.markers[info.username].draggable = true;
       });
