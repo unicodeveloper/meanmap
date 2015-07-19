@@ -1825,6 +1825,7 @@ select[multiple].input-lg {
 .has-feedback {
   position: relative;
 }
+
 .has-feedback .form-control {
   padding-right: 42.5px;
 }

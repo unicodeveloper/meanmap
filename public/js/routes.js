@@ -51,8 +51,8 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         templateUrl: './views/help.client.view.html',
         requireAuth: false
     })
-    .when('/sponsor', {
-        templateUrl: './views/sponsor.client.view.html',
+    .when('/tutorials', {
+        templateUrl: './views/tutorial-list.client.view.html',
         requireAuth: false
     })
     .when('/tutorial/create', {

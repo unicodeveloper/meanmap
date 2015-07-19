@@ -9,6 +9,9 @@ app.factory('Tuts', ['$http', function($http) {
           cb(false, response.data);
         }
       });
-    }
+    },
+    getAllTutorials: function(){
+      return $http.get('/api/tutorials');
+    },
   };
 }]);

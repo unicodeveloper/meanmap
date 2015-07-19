@@ -16,6 +16,14 @@ app.controller('TutsController', ['$rootScope','$scope','$http','$location','$wi
     });
   };
 
+  $scope.listTutorials =  function(){
+    Tuts.getAllTutorials().then(function(response){
+       $scope.allTutorials = response.data;
+    });
+  };
+
+  $scope.listTutorials();
+
 }]);
 
 

@@ -32,4 +32,5 @@ module.exports = function(app) {
   app.delete('/api/project/:id', verifyToken, Project.deleteEachProject);
 
   app.post('/api/tutorial/create', verifyToken, Tutorial.create);
+  app.get('/api/tutorials', Tutorial.getAllTutorials);
 };
