@@ -8,6 +8,7 @@ var app = angular
               'ngFileUpload',
               'leaflet-directive',
               'ui.bootstrap',
+              'ui.tinymce',
               'appRoutes',
               'ngSanitize',
               'toastr',

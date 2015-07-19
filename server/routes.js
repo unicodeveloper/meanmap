@@ -2,6 +2,7 @@ var User        = require('./controllers/user.server.controller'),
     Contact     = require('./controllers/contact.server.controller'),
     Newsletter  = require('./controllers/newsletter.server.controller'),
     Project     = require('./controllers/project.server.controller'),
+    Tutorial    = require('./controllers/tutorial.server.controller'),
     jwt         = require('jsonwebtoken'),
     secrets     = require('../config/secrets'),
     verifyToken = require('../config/tokenMiddleware'),
@@ -29,4 +30,6 @@ module.exports = function(app) {
   app.get('/api/project',  Project.getAllProjects);
   app.get('/api/projects/:projectSlug', Project.getEachProjectDetail);
   app.delete('/api/project/:id', verifyToken, Project.deleteEachProject);
+
+  app.post('/api/tutorial/create', verifyToken, Tutorial.create);
 };

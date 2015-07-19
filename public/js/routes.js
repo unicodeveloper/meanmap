@@ -55,6 +55,11 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         templateUrl: './views/sponsor.client.view.html',
         requireAuth: false
     })
+    .when('/tutorial/create', {
+        templateUrl: './views/tutorial-create.client.view.html',
+        controller: 'TutsController',
+        requireAuth: true
+    })
     .when('/reset-password', {
         templateUrl: './views/reset-password.view.html',
         requireAuth: false
