@@ -7,10 +7,14 @@
     </div>
 
     <div class="row" ng-controller="TutsController">
-      <div class="col-md-10">
+      <div class="col-md-12">
         <div ng-repeat="tuts in allTutorials" class="bs-callout">
           <h4>{{ tuts.title }}</h4>
           <p>{{ tuts.content | limitTo: 250 }}...</p>
+          <p>
+            Posted by <a href="mean-developers/{{ tuts.postedBy }}">@unicodeveloper</a>
+            <small><em class="time" am-time-ago="tuts.created_on"></em></small>
+          </p>
         </div>
       </div>
 
