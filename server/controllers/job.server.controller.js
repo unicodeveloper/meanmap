@@ -1,6 +1,5 @@
 var nodemailer = require('nodemailer'),
     secrets       = require('../../config/secrets'),
-    slug          = require('slug'),
     Job           = require('../models/job.server.model');
 
 module.exports = {
