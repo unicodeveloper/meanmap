@@ -3,6 +3,13 @@ var nodemailer = require('nodemailer'),
     secrets       = require('../../config/secrets');
 
 module.exports = {
+  /**
+   * Send An Email To The Admin About Enquiries Made By Users
+   * @param  {void}   req
+   * @param  {void}   res
+   * @param  {Function} next
+   * @return {object}
+   */
   sendMessage: function(req, res, next){
     var transporter = nodemailer.createTransport(secrets.mailOptions);
     var fullname    = req.body.name.toLowerCase();
