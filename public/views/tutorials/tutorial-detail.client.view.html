@@ -8,10 +8,16 @@
 
     <div class="row" ng-controller="TutsController">
       <div class="col-md-12" style="margin:20px;padding:5px;">
-        <div>
+        <div style="margin-bottom:20px;">
           <h4><i class="fa fa-file-code-o"></i> {{ tutorialDetails.title }}</h4>
           <p marked="tutorialDetails.content" style="margin-top:10px;"></p>
         </div>
+
+        <!-- Comments By Users For Tutorials -->
+        <dir-disqus disqus-shortname="meanmap" disqus-identifier="{{ tutorialDetails.id }}"
+            disqus-title="{{ tutorialDetails.title }}"
+            disqus-url="{{ tutorialDetails.slug }}">
+        </dir-disqus>
       </div>
     </div>
   </div>
