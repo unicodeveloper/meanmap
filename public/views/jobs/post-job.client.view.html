@@ -20,7 +20,7 @@
 
             <!-- Job Description Form Input -->
             <div class="form-group">
-              <label for="content">Job Description</label>
+              <label for="content">Job Description <em>*You may write in Markdown</em></label>
               <textarea class="form-control"  style="width:150%;" data-ng-model="job.description" name="description" cols="50" rows="12" required></textarea>
               <div class="help-block text-danger" data-ng-if="jobForm.description.$dirty" data-ng-messages="jobForm.description.$error">
                 <div data-ng-message="required" class="has-error">Job Description is required.</div>
