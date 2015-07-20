@@ -25,7 +25,7 @@ module.exports = {
   },
 
   getAllTutorials: function( req, res){
-    Tutorial.find({}, function(err, tutorials) {
+    Tutorial.find({ approval_status: true }, function(err, tutorials) {
       res.status(200).json(tutorials);
     });
   },

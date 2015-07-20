@@ -4,9 +4,6 @@ app.controller('ProfileController', ['$rootScope','$scope','$http','$location','
     if(success){
       $scope.userDetails = data.user;
     }
-    else{
-      console.log("Nothing Found");
-    }
   });
 }]);
 

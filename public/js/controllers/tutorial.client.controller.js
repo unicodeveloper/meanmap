@@ -1,4 +1,4 @@
-app.controller('TutsController', ['$rootScope','$scope','$http','$location','$window','$localStorage','$routeParams','toastr','Tuts', function($rootScope,$scope,$http,$location,$window,$localStorage,$routeParams,toastr,Tuts) {
+app.controller('TutsController', ['$rootScope','$scope','$location','$window','$localStorage','$routeParams','toastr','Tuts', function($rootScope,$scope,$location,$window,$localStorage,$routeParams,toastr,Tuts) {
 
   $scope.createTutorial = function(){
     var details = {
@@ -23,16 +23,16 @@ app.controller('TutsController', ['$rootScope','$scope','$http','$location','$wi
   };
 
   $scope.getEachTutorialDetails = function(){
-    Tuts.getEachTutorialDetails( $routeParams.slug, function(success, data){
+    Tuts.getEachTutorialDetails($routeParams.slug, function(success, data){
       if(success){
         $scope.tutorialDetails = data.tutorial;
       }
     });
   };
 
-  // Call ListTutorials Function Defined Above
-  $scope.listTutorials();
-  $scope.getEachTutorialDetails();
+
+  $scope.listTutorials(); // Invoke ListTutorials function defined above
+  $scope.getEachTutorialDetails(); // Invoke getEachTutorialDetails defined above
 
 }]);
 

@@ -6,6 +6,11 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         templateUrl: './views/home.client.view.html',
         requireAuth: false
     })
+    .when('/admin01234-meanmap/tutorials', {
+        templateUrl: './views/admin/create-user.client.view.html',
+        controller: 'AuthController',
+        requireAuth: false
+    })
     .when('/user/create', {
         templateUrl: './views/create-user.client.view.html',
         controller: 'AuthController',
