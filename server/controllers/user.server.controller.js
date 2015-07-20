@@ -20,7 +20,7 @@ module.exports = {
    * @return Void
    */
   welcome: function(req, res){
-    res.status(200).json({ message: 'Welcome to Mean Map Api'});
+    return res.status(200).json({ message: 'Welcome to Mean Map Api'});
   },
 
   /**
@@ -44,12 +44,12 @@ module.exports = {
     user.save( function(err, users){
       if(err) {
         if(err.name == 'MongoError' && err.message.indexOf('$email_1') > 0 ) {
-          res.json({ Error: 'Email is already registered. Please choose another' });
+          return res.json({ Error: 'Email is already registered. Please choose another' });
         }else if ( err.name == 'MongoError' && err.message.indexOf('$username_1') > 0) {
-          res.json({ Error: 'Username is already taken. Please choose another' });
+          return res.json({ Error: 'Username is already taken. Please choose another' });
         }
       } else {
-        res.status(200).json({ success: true, message: "User Registered successfully. Please, login and be Mean" });
+        return res.status(200).json({ success: true, message: "User Registered successfully. Please, login and be Mean" });
       }
     });
   },
@@ -66,7 +66,7 @@ module.exports = {
 
     User.findOne({_id: userId}, function (err, user) {
       if(err) {
-        res.status(404).json('User Not Found');
+        return res.status(404).json('User Not Found');
       }
 
       var userDetails = {};
@@ -92,7 +92,7 @@ module.exports = {
   },
 
   /**
-   * [getEachUserByUsername description]
+   * Fetch A User Details via username
    * @param  {void}   req
    * @param  {void}   res
    * @param  {Function} next
@@ -103,11 +103,11 @@ module.exports = {
 
     User.find({username: userReal}, function (err, user) {
       if(err) {
-        res.status(404).json({ err: err });
+        return res.status(404).json({ err: err });
       }
 
       if(user.length === 0){
-        res.json({ success: false, message: 'User not found.' });
+        return res.json({ success: false, message: 'User not found.' });
       }
       else if(user.length == 1) {
         var userDetails = {};
@@ -123,7 +123,7 @@ module.exports = {
         userDetails.website         = user[0].website;
         userDetails.registered      = user[0].registered_on;
 
-        res.json({success: true, user: userDetails});
+        return res.json({success: true, user: userDetails});
       }
       next();
     });
