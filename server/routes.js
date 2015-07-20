@@ -26,6 +26,9 @@ module.exports = function(app) {
   app.post('/api/newsletter',  Newsletter.subscribe);
   app.post('/api/password',    User.resetUserPassword);
 
+  app.post('/api/jobs/create', Job.create);
+  app.get('/api/jobs', Job.getAllJobs);
+
   app.post('/api/project', Project.shareProject);
   app.get('/api/project',  Project.getAllProjects);
   app.get('/api/projects/:projectSlug', Project.getEachProjectDetail);
