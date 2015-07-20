@@ -1,0 +1,30 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h4>FULL STACK DEVELOPER JOBS ON THE PLANET</h4>
+      </div>
+    </div>
+
+    <br/>
+
+    <div class="row" ng-controller="JobsController">
+      <div class="col-md-12">
+        <div ng-repeat="jobs in allJobs" class="bs-callout">
+          <h4><i class="fa fa-suitcase"></i> {{ jobs.title }}</h4>
+          <p marked="jobs.description"></p>
+          <p>
+            Posted by <span class="btn-info badge">{{ jobs.company }}</span>
+            <small><em class="time" am-time-ago="jobs.created_on"></em></small>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 text-center">
+          <a href="/post-a-job" class="btn btn-block btn-lg">Post a Job</a>
+      </div>
+    </div>
+  </div>
+</section>

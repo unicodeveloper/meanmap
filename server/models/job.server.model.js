@@ -1,6 +1,6 @@
 var mongoose          = require('mongoose'),
     jobSchema         =  mongoose.Schema({
-    title:            { type: String, unique: true },
+    title:            { type: String },
     description:      { type: String, required: true },
     expired:          { type: Boolean, default: false },
     approval_status:  { type: Boolean, default: false},

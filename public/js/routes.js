@@ -25,6 +25,10 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         templateUrl: './views/reset-password.client.view.html',
         requireAuth: false
     })
+    .when('/jobs', {
+        templateUrl: './views/jobs/jobs.client.view.html',
+        requireAuth: false
+    })
     .when('/mean-developers', {
         templateUrl: './views/developers.client.view.html',
         requireAuth: false
@@ -57,7 +61,8 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         requireAuth: false
     })
     .when('/post-a-job', {
-        templateUrl: './views/post-job.client.view.html',
+        templateUrl: './views/jobs/post-job.client.view.html',
+        controller: 'JobsController',
         requireAuth: false
     })
     .when('/tutorials', {
@@ -75,10 +80,6 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
     })
     .when('/reset-password', {
         templateUrl: './views/reset-password.view.html',
-        requireAuth: false
-    })
-    .when('/jobs', {
-        templateUrl: './views/jobs.client.view.html',
         requireAuth: false
     })
     .when('/projects', {

@@ -23,7 +23,7 @@ app.controller('JobsController', ['$rootScope','$scope','$location','$window','$
   };
 
 
-  $scope.listJobs()(); // Invoke listJobs function defined above
+  $scope.listJobs(); // Invoke listJobs function defined above
 
 }]);
 
