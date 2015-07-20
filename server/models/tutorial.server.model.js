@@ -5,7 +5,6 @@ var mongoose          = require('mongoose'),
     content:          { type: String, required: true },
     approval_status:  { type: Boolean, default: false},
     postedBy:         { type: String, required: true },
-
     created_on:       { type: Date, default: Date.now },
     update_on:        { type: Date, default: Date.now }
 });

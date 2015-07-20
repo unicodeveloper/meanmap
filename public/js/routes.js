@@ -56,6 +56,10 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         templateUrl: './views/help.client.view.html',
         requireAuth: false
     })
+    .when('/post-a-job', {
+        templateUrl: './views/post-job.client.view.html',
+        requireAuth: false
+    })
     .when('/tutorials', {
         templateUrl: './views/tutorials/tutorial-list.client.view.html',
         requireAuth: false
