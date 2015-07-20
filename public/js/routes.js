@@ -12,17 +12,17 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         requireAuth: false
     })
     .when('/user/create', {
-        templateUrl: './views/create-user.client.view.html',
+        templateUrl: './views/account/create-user.client.view.html',
         controller: 'AuthController',
         requireAuth: false
     })
     .when('/auth/login', {
-        templateUrl: './views/login.client.view.html',
+        templateUrl: './views/account/login.client.view.html',
         controller: 'AuthController',
         requireAuth: false
     })
     .when('/auth/new_password', {
-        templateUrl: './views/reset-password.client.view.html',
+        templateUrl: './views/account/reset-password.client.view.html',
         requireAuth: false
     })
     .when('/jobs', {
@@ -34,7 +34,7 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         requireAuth: false
     })
     .when('/mean-developers/:username', {
-        templateUrl: './views/account.client.view.html',
+        templateUrl: './views/account/account.client.view.html',
         controller: 'ProfileController',
         requireAuth: false
     })
@@ -43,12 +43,12 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         requireAuth: false
     })
     .when('/account', {
-        templateUrl: './views/account.client.view.html',
+        templateUrl: './views/account/account.client.view.html',
         controller: 'UserController',
         requireAuth: true,
     })
     .when('/account/edit', {
-        templateUrl: './views/edit-account.client.view.html',
+        templateUrl: './views/account/edit-account.client.view.html',
         controller: 'UserController',
         requireAuth: true,
     })
@@ -79,7 +79,7 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         requireAuth: true
     })
     .when('/reset-password', {
-        templateUrl: './views/reset-password.view.html',
+        templateUrl: './views/account/reset-password.view.html',
         requireAuth: false
     })
     .when('/projects', {
@@ -88,10 +88,6 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
     })
     .when('/projects/featured/:projectSlug', {
         templateUrl: './views/projects/project-detail.client.view.html',
-        requireAuth: false
-    })
-    .when('/elysium', {
-        templateUrl: './views/elysium.client.view.html',
         requireAuth: false
     })
 
