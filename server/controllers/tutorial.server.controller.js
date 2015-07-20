@@ -5,6 +5,13 @@ var nodemailer = require('nodemailer'),
 
 module.exports = {
 
+  /**
+   * Saves A New Tutorial Posted By User
+   * @param  {void}   req
+   * @param  {void}   res
+   * @param  {Function} next
+   * @return {object}
+   */
   create: function(req, res, next){
     var tuts            = new Tutorial();
     tuts.title          = req.body.title;
@@ -25,12 +32,25 @@ module.exports = {
     next();
   },
 
+  /**
+   * Fetch All Tutorials that have been approved
+   * @param  {void} req
+   * @param  {void} res
+   * @return {object}
+   */
   getAllTutorials: function( req, res){
     Tutorial.find({ approval_status: true }, function(err, tutorials) {
       res.status(200).json(tutorials);
     });
   },
 
+  /**
+   * Fetch the Details of Each Tutorial
+   * @param  {void}   req
+   * @param  {void}   res
+   * @param  {Function} next
+   * @return {object}
+   */
   getEachTutorialDetails: function(req, res, next){
     var tutorialSlug = req.params.slug;
 
