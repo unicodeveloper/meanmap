@@ -14,14 +14,15 @@ module.exports = {
     tuts.save( function(err, tuts){
       if(err) {
         if(err.name == 'MongoError' && err.message.indexOf('$title_1') > 0 || err.message.indexOf('$slug_1') > 0) {
-          res.json({ success: false, message: "Tutorial is already registered. Please write another" });
+          return res.json({ success: false, message: "Tutorial is already registered. Please write another" });
         }else{
-          res.json( err);
+          return res.json(err);
         }
       } else {
-        res.status(200).json({ success: true, message: "Tutorial submitted successfully.Review will take place now" });
+        return res.status(200).json({ success: true, message: "Tutorial submitted successfully.Review will take place now" });
       }
     });
+    next();
   },
 
   getAllTutorials: function( req, res){
@@ -45,7 +46,7 @@ module.exports = {
         var tutorialDetails = {};
         var tuts = tutorial[0];
         tutorialDetails.id             = tuts._id;
-        tutorialDetails.title           = tuts.title;
+        tutorialDetails.title          = tuts.title;
         tutorialDetails.content        = tuts.content;
         tutorialDetails.postedBy       = tuts.postedBy;
         tutorialDetails.postedOn       = tuts.created_on;
