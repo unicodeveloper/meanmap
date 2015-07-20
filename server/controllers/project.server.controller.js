@@ -53,7 +53,7 @@ module.exports = {
    */
   getAllProjects: function( req, res, next){
     Project.find({}, function(err, projects) {
-      res.status(200).json(projects);
+      return res.status(200).json(projects);
     });
   },
 
@@ -69,24 +69,24 @@ module.exports = {
 
     Project.find({ slug: projectSlug }, function (err, project) {
       if(err) {
-        res.status(404).json({ err: err });
+        return res.status(404).json({ err: err });
       }
 
       if(project.length === 0){
-        res.json({ success: false, message: 'Project not found.' });
+        return res.json({ success: false, message: 'Project not found.' });
       }
       else if(project.length == 1) {
         var projectDetails = {};
-        var project = project[0];
-        projectDetails.id             = project._id;
-        projectDetails.name           = project.name;
-        projectDetails.slug           = project.slug;
-        projectDetails.description    = project.description;
-        projectDetails.url            = project.url;
-        projectDetails.postedBy       = project.postedBy;
-        projectDetails.postedOn       = project.registered_on;
+        var projects = project[0];
+        projectDetails.id             = projects._id;
+        projectDetails.name           = projects.name;
+        projectDetails.slug           = projects.slug;
+        projectDetails.description    = projects.description;
+        projectDetails.url            = projects.url;
+        projectDetails.postedBy       = projects.postedBy;
+        projectDetails.postedOn       = projects.registered_on;
 
-        res.json({success: true, project: projectDetails});
+        return res.json({success: true, project: projectDetails});
       }
       next();
     });
@@ -104,7 +104,7 @@ module.exports = {
 
     Project.remove({_id: projectId}, function (err, project) {
       if(err) {
-        res.status(404).json({success: false, message: 'Project Details Not Found'});
+        return res.status(404).json({success: false, message: 'Project Details Not Found'});
       }
 
       res.json({success: true, message: 'Delete Successful'});
