@@ -8,8 +8,13 @@ var nodemailer = require('nodemailer'),
     Project       = require('../models/project.server.model');
 
 module.exports = {
+  /**
+   * Saves a Project Shared By A User
+   * @param  {void} req
+   * @param  {void} res
+   * @return {object}
+   */
   shareProject: function(req, res){
-
     async.waterfall([
       function(cb) {
         var projectUrl = req.body.url;
@@ -39,12 +44,26 @@ module.exports = {
     });
   },
 
+  /**
+   * Fetch All Projects Submitted By Users
+   * @param  {void}   req
+   * @param  {void}   res
+   * @param  {void}   next
+   * @return {object}
+   */
   getAllProjects: function( req, res, next){
     Project.find({}, function(err, projects) {
       res.status(200).json(projects);
     });
   },
 
+  /**
+   * Fetch the Details of Each Project
+   * @param  {void}   req
+   * @param  {void}   res
+   * @param  {Function} next
+   * @return {object}
+   */
   getEachProjectDetail: function(req, res, next){
     var projectSlug = req.params.projectSlug;
 
@@ -73,6 +92,13 @@ module.exports = {
     });
   },
 
+  /**
+   * Delete A Project
+   * @param  {void}   req
+   * @param  {void}   res
+   * @param  {Function} next
+   * @return {object}
+   */
   deleteEachProject: function(req, res, next){
     var projectId   = req.params.id;
 
