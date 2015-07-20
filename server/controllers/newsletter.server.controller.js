@@ -26,11 +26,9 @@ module.exports = {
     };
     // submit subscription request to mail-chimp
     MC.lists.subscribe(mcReq, function(data) {
-      console.log(data);
       res.json({ success:true, message: data });
       next();
     }, function(error) {
-        console.log(error);
         res.json({ success:false, error: error });
     });
   }
