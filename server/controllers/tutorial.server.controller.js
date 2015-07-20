@@ -4,7 +4,6 @@ var nodemailer = require('nodemailer'),
     Tutorial      = require('../models/tutorial.server.model');
 
 module.exports = {
-
   /**
    * Saves A New Tutorial Posted By User
    * @param  {void}   req

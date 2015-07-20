@@ -14,7 +14,7 @@
 
 module.exports = {
   /**
-   * [welcome -- Welcome Notice]
+   * Welcome Notice
    * @param  req
    * @param  res
    * @return Void
@@ -24,7 +24,7 @@ module.exports = {
   },
 
   /**
-   * [registerUser -- Register User with username, email and password and other information]
+   * Register User with username, email and password and other information
    * @param  req
    * @param  res
    * @return Void
@@ -55,7 +55,7 @@ module.exports = {
   },
 
   /**
-   * [getEachUserDetails description]
+   * Fetch Each User Details
    * @param   req
    * @param   res
    * @param   next
@@ -93,10 +93,10 @@ module.exports = {
 
   /**
    * [getEachUserByUsername description]
-   * @param  {[type]}   req  [description]
-   * @param  {[type]}   res  [description]
-   * @param  {Function} next [description]
-   * @return {[type]}        [description]
+   * @param  {void}   req
+   * @param  {void}   res
+   * @param  {Function} next
+   * @return {object}
    */
   getEachUserByUsername: function(req, res, next){
     var userReal = req.params.username;
@@ -130,11 +130,11 @@ module.exports = {
   },
 
   /**
-   * [getEachUserByEmail description]
-   * @param  {[type]}   req  [description]
-   * @param  {[type]}   res  [description]
-   * @param  {Function} next [description]
-   * @return {[type]}        [description]
+   * Reset User Password
+   * @param  {void}   req
+   * @param  {void}   res
+   * @param  {Function} next
+   * @return {object}
    */
   resetUserPassword: function(req, res, next){
     var userEmail = req.body.email;
@@ -189,7 +189,7 @@ module.exports = {
   },
 
   /**
-   * [updateEachUserDetails Update User Details]
+   * Update User Details
    * @param  req
    * @param  res
    * @param  next
@@ -210,7 +210,7 @@ module.exports = {
   },
 
   /**
-   * [deleteEachUserDetails description]
+   * Delete A User
    * @param  req
    * @param  res
    * @param  next
@@ -230,7 +230,7 @@ module.exports = {
   },
 
   /**
-   * [authenticateUserByEmail -- Authenticate User Email and Password]
+   * Authenticate User Email and Password
    * @param  req
    * @param  res
    * @return Void
@@ -273,7 +273,7 @@ module.exports = {
   },
 
   /**
-   * [getAllUsers -- Get All the Users registered on the platform]
+   * Fetch All the Users registered on the platform
    * @param   req
    * @param   res
    * @return  void
@@ -285,16 +285,15 @@ module.exports = {
   },
 
   /**
-   * [postPhoto description]
-   * @param  {[type]} req [description]
-   * @param  {[type]} res [description]
-   * @return {[type]}     [description]
+   * Upload a photo to Meanmap's Cloudinary Server
+   * @param  {void} req
+   * @param  {void} res
+   * @return {object}
    */
   postPhoto: function(req, res){
     var fileName = '';
     var size = '';
     var tempPath;
-    var destPath = '';
     var extension;
     var imageName;
     var destPath = '';
