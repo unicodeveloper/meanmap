@@ -4,7 +4,13 @@ var nodemailer = require('nodemailer'),
     Job           = require('../models/job.server.model');
 
 module.exports = {
-
+  /**
+   * Saves a new Job Posted By A Company/User
+   * @param  {void}   req
+   * @param  {void}   res
+   * @param  {Function} next
+   * @return {object}
+   */
   create: function(req, res, next){
     var jobs            = new Job();
     jobs.title          = req.body.title;
@@ -18,8 +24,13 @@ module.exports = {
       }
     });
   },
-
-  getAllJobs: function( req, res){
+  /**
+   * Fetch All Jobs that have been approved by the Admin
+   * @param  {void} req
+   * @param  {void} res
+   * @return {object}
+   */
+  getAllJobs: function(req, res){
     Job.find({ approval_status: true }, function(err, jobs) {
       return res.status(200).json(jobs);
     });
