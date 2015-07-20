@@ -1,6 +1,6 @@
 require('dotenv').load();
 var  express       = require('express'),
-     jwt           = require('jsonwebtoken');
+     jwt           = require('jsonwebtoken'),
      morgan        = require('morgan'),
      bodyParser    = require('body-parser'),
      mongoose      = require('mongoose'),
@@ -8,10 +8,9 @@ var  express       = require('express'),
      cors          = require('cors'),
      secrets       = require('./config/secrets'),
      testdb        = require('./config/testdb'),
-     route         = require('./server/routes'),
-     passport      = require('passport');
+     route         = require('./server/routes');
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 5555;
 
 /**
  * Connect to MongoDB.
