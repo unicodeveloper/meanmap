@@ -115,7 +115,7 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
     var modalScope = $rootScope.$new();
     modalScope.modalInstance = $modal.open({
       animation: $scope.animationsEnabled,
-      templateUrl: '../../views/create-project.client.view.html',
+      templateUrl: '../../views/projects/create-project.client.view.html',
       controller: 'ProjectController',
       size: size,
       scope: modalScope
@@ -125,7 +125,6 @@ app.controller('UserController', ['$rootScope','$scope','$http','$location','$wi
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
-
   };
 
   $scope.toggleAnimation = function () {

@@ -52,11 +52,15 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         requireAuth: false
     })
     .when('/tutorials', {
-        templateUrl: './views/tutorial-list.client.view.html',
+        templateUrl: './views/tutorials/tutorial-list.client.view.html',
+        requireAuth: false
+    })
+    .when('/tutorials/:slug', {
+        templateUrl: './views/tutorials/tutorial-detail.client.view.html',
         requireAuth: false
     })
     .when('/tutorial/create', {
-        templateUrl: './views/tutorial-create.client.view.html',
+        templateUrl: './views/tutorials/tutorial-create.client.view.html',
         controller: 'TutsController',
         requireAuth: true
     })
@@ -69,11 +73,11 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         requireAuth: false
     })
     .when('/projects', {
-        templateUrl: './views/projects.client.view.html',
+        templateUrl: './views/projects/projects.client.view.html',
         requireAuth: false
     })
     .when('/projects/featured/:projectSlug', {
-        templateUrl: './views/project-detail.client.view.html',
+        templateUrl: './views/projects/project-detail.client.view.html',
         requireAuth: false
     })
     .when('/elysium', {

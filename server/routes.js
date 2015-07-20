@@ -33,4 +33,5 @@ module.exports = function(app) {
 
   app.post('/api/tutorial/create', verifyToken, Tutorial.create);
   app.get('/api/tutorials', Tutorial.getAllTutorials);
+  app.get('/api/tutorials/:slug', Tutorial.getEachTutorialDetails);
 };

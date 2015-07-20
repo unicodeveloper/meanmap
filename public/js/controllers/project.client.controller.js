@@ -39,11 +39,9 @@ app.controller('ProjectController', ['$rootScope','$scope','$http','$location','
     });
   };
 
-  // Fetch All Projects
   Project.getAllProjects().then( function(response){
     $scope.allProjects = response.data;
   });
-
 
   Project.getEachProjectDetails( $routeParams.projectSlug, function(success, data){
     if(success){

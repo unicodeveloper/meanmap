@@ -9,7 +9,7 @@
     <div class="row" ng-controller="TutsController">
       <div class="col-md-12">
         <div ng-repeat="tuts in allTutorials" class="bs-callout">
-          <h4>{{ tuts.title }}</h4>
+          <h4><i class="fa fa-language"></i> <a href="tutorials/{{ tuts.slug }}">{{ tuts.title }}</a></h4>
           <p>{{ tuts.content | limitTo: 250 }}...</p>
           <p>
             Posted by <a href="mean-developers/{{ tuts.postedBy }}">@unicodeveloper</a>

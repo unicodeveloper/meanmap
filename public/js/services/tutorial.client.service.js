@@ -10,8 +10,20 @@ app.factory('Tuts', ['$http', function($http) {
         }
       });
     },
+
     getAllTutorials: function(){
       return $http.get('/api/tutorials');
     },
+
+    getEachTutorialDetails: function( slug, cb ){
+      return $http.get('/api/tutorials/' + slug).then( function(response){
+        if(response.data.success){
+          cb(true, response.data);
+        }
+        else{
+          cb(false, response.data);
+        }
+      });
+    }
   };
 }]);

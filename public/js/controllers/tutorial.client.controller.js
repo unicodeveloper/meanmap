@@ -22,7 +22,17 @@ app.controller('TutsController', ['$rootScope','$scope','$http','$location','$wi
     });
   };
 
+  $scope.getEachTutorialDetails = function(){
+    Tuts.getEachTutorialDetails( $routeParams.slug, function(success, data){
+      if(success){
+        $scope.tutorialDetails = data.tutorial;
+      }
+    });
+  };
+
+  // Call ListTutorials Function Defined Above
   $scope.listTutorials();
+  $scope.getEachTutorialDetails();
 
 }]);
 
