@@ -35,7 +35,7 @@ module.exports = function(app) {
   app.get('/api/projects/:projectSlug', Project.getEachProjectDetail);
   app.delete('/api/project/:id', verifyToken, Project.deleteEachProject);
 
-  app.post('/api/tutorial/create', verifyToken, Tutorial.create);
+  app.post('/api/tutorials/create', verifyToken, Tutorial.create);
   app.get('/api/tutorials', Tutorial.getAllTutorials);
   app.get('/api/tutorials/:slug', Tutorial.getEachTutorialDetails);
 };

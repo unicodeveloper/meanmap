@@ -11,24 +11,21 @@ module.exports = {
    * @param  {Function} next
    * @return {object}
    */
-  create: function(req, res, next){
+  create: function(req, res){
     var tuts            = new Tutorial();
     tuts.title          = req.body.title;
     tuts.slug           = slug(req.body.title.toLowerCase());
     tuts.content        = req.body.content;
     tuts.postedBy       = req.body.postedBy;
-    tuts.save( function(err, tuts){
+    tuts.save(function(err, tuts){
       if(err) {
         if(err.name == 'MongoError' && err.message.indexOf('$title_1') > 0 || err.message.indexOf('$slug_1') > 0) {
           return res.json({ success: false, message: "Tutorial is already registered. Please write another" });
-        }else{
-          return res.json(err);
         }
       } else {
         return res.status(200).json({ success: true, message: "Tutorial submitted successfully.Review will take place now" });
       }
     });
-    next();
   },
 
   /**

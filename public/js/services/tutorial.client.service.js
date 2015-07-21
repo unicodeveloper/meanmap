@@ -1,7 +1,7 @@
 app.factory('Tuts', ['$http', function($http) {
   return {
     create: function(tutorialDetails, cb){
-      $http.post('/api/tutorial/create', tutorialDetails).then( function(response){
+      $http.post('/api/tutorials/create', tutorialDetails).then( function(response){
         if(response.data.success){
           cb(true, response.data);
         }
