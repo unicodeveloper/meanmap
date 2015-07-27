@@ -49,9 +49,10 @@
     "leaflet.markercluster": "~0.4.0",
     "ngDialog": "~0.4.0",
     "angular-utils-disqus": "~0.3.0",
-    "satellizer": "~0.11.2"
+    "satellizer": "~0.11.2",
+    "angular-cookies": "~1.4.3"
   },
   "resolutions": {
-    "angular": "~1.4.0"
+    "angular": "1.4.3"
   }
 }

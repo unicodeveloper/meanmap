@@ -1,5 +1,6 @@
 var app = angular
             .module('meanmap', [
+              'ngCookies',
               'ngRoute',
               'ngStorage',
               'ngMessages',
