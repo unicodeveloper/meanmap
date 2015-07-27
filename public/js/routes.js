@@ -38,6 +38,11 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         controller: 'ProfileController',
         requireAuth: false
     })
+    .when('/mp-admin', {
+        templateUrl: './views/admin/index.client.view.html',
+        controller: 'AdminController',
+        requireAuth: false
+    })
     .when('/page/contact', {
         templateUrl: './views/contact.client.view.html',
         requireAuth: false

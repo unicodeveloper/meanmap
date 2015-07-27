@@ -1,0 +1,43 @@
+<!-- Footer Begins -->
+<section id="sidebar" class="new_footer">
+  <div class="container">
+    <div class="row">
+      <div class="span3 offset1">
+        <h5>MORE INFO</h5>
+        <div><a href="https://twitter.com/meanmapdotcom">Twitter</a></div>
+        <div><a href="/page/about">About</a></div>
+        <div><a href="mailto:prosperotemuyiwa@gmail.com">Help</a></div>
+        <div><a href="/page/contact">Contact</a></div>
+      </div>
+      <div class="span3">
+        <h5>CO-PLANETS</h5>
+        <span class="white-text"><a href="http://mean.io/">Mean.io</a></span><br>
+        <span class="white-text"><a href="http://goodheads.io/">Goodheads.io</a></span><br>
+        <span class="white-text"><a href="https://scotch.io/">Scotch.io</a></span><br>
+        <span class="white-text"><a href="https://masteringmean.com">Mastering mean</a></span><br>
+      </div>
+      <div class="span4">
+        <h5>THE MEAN PLANET NEWSLETTER</h5>
+        <div ng-controller="NewsletterController">
+          <form class="form-email" data-ng-submit="subscribeUser()" name="subscribeForm">
+            <input type="email" name="email" data-ng-model="newsletter.email" class="validate-email signup-email-field" placeholder="e.g busayo@gmail.com" required>
+            <input type="submit" value="Subscribe" class="subscribe-btn">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Footer Ends -->
+<footer id="copyright">
+  Copyright &copy; 2015 Meanmap.com was created By <a href="https://twitter.com/unicodeveloper">Otemuyiwa Prosper</a>. Mean Developers Brewing Fire Together
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64327972-1', 'auto');
+  ga('send', 'pageview');
+</script>
