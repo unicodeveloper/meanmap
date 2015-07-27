@@ -1,85 +1,95 @@
-<section class="faq faq-1">
-  <div class="container">
-    <div class="col-md-6">
-      <h3 class="dark-grey">Your Information</h3>
-      <form name="signUpForm" data-ng-submit="signUp()">
-      <!-- Username Form Input -->
-      <div class="form-group col-lg-6">
-        <label for="username">Username</label>
-        <input class="form-control" ng-model="user.username" placeholder="username e.g busayo" name="username" type="text" id="username" required>
-        <div class="help-block text-danger" ng-if="signUpForm.username.$dirty" ng-messages="signUpForm.username.$error">
-          <div ng-message="required" class="has-error">Username is required.</div>
+<!-- Inject Navigation view here -->
+<div data-ng-include data-src="'../../nav.html'"></div>
+
+<!-- Main container for User creation Page View -->
+<div class="main-container" style="min-height:580px;">
+  <section class="faq faq-1">
+    <div class="container">
+      <div class="col-md-6">
+        <h3 class="dark-grey">Your Information</h3>
+        <form name="signUpForm" data-ng-submit="signUp()">
+        <!-- Username Form Input -->
+        <div class="form-group col-lg-6">
+          <label for="username">Username</label>
+          <input class="form-control" ng-model="user.username" placeholder="username e.g busayo" name="username" type="text" id="username" required>
+          <div class="help-block text-danger" ng-if="signUpForm.username.$dirty" ng-messages="signUpForm.username.$error">
+            <div ng-message="required" class="has-error">Username is required.</div>
+          </div>
         </div>
-      </div>
 
-      <!-- Name Form Input -->
-      <div class="form-group col-lg-6">
-        <label for="name">Name</label>
-        <input class="form-control" ng-model="user.fullname" placeholder="fullname e.g Prosper Otemuyiwa" name="fullname" type="text" id="name" required>
-        <div class="help-block text-danger" ng-if="signUpForm.fullname.$dirty" ng-messages="signUpForm.fullname.$error">
-          <div ng-message="required" class="has-error">Full name is required.</div>
+        <!-- Name Form Input -->
+        <div class="form-group col-lg-6">
+          <label for="name">Name</label>
+          <input class="form-control" ng-model="user.fullname" placeholder="fullname e.g Prosper Otemuyiwa" name="fullname" type="text" id="name" required>
+          <div class="help-block text-danger" ng-if="signUpForm.fullname.$dirty" ng-messages="signUpForm.fullname.$error">
+            <div ng-message="required" class="has-error">Full name is required.</div>
+          </div>
         </div>
-      </div>
 
-      <!-- Email Form Input -->
-      <div class="form-group col-lg-6">
-        <label for="email">Email Address</label>
-        <input class="form-control" ng-model="user.email" placeholder="email e.g prosperotemuyiwa@gmail.com" name="email" type="email" id="email" required>
-        <div class="help-block text-danger" ng-if="signUpForm.email.$dirty" ng-messages="signUpForm.email.$error">
-          <div ng-message="required" class="has-error">Email is required.</div>
+        <!-- Email Form Input -->
+        <div class="form-group col-lg-6">
+          <label for="email">Email Address</label>
+          <input class="form-control" ng-model="user.email" placeholder="email e.g prosperotemuyiwa@gmail.com" name="email" type="email" id="email" required>
+          <div class="help-block text-danger" ng-if="signUpForm.email.$dirty" ng-messages="signUpForm.email.$error">
+            <div ng-message="required" class="has-error">Email is required.</div>
+          </div>
         </div>
-      </div>
 
-      <!-- Password Form Input -->
-      <div class="form-group col-lg-6">
-        <label for="password">Password</label>
-        <input class="form-control" ng-model="user.password" placeholder="password" name="password" type="password" value="" id="password" required>
-        <div class="help-block text-danger" ng-if="signUpForm.password.$dirty" ng-messages="signUpForm.password.$error">
-          <div ng-message="required" class="has-error">Password is required.</div>
+        <!-- Password Form Input -->
+        <div class="form-group col-lg-6">
+          <label for="password">Password</label>
+          <input class="form-control" ng-model="user.password" placeholder="password" name="password" type="password" value="" id="password" required>
+          <div class="help-block text-danger" ng-if="signUpForm.password.$dirty" ng-messages="signUpForm.password.$error">
+            <div ng-message="required" class="has-error">Password is required.</div>
+          </div>
         </div>
-      </div>
 
-      <!-- Website Form Input -->
-      <div class="form-group col-lg-6">
-        <label for="website">Website / Blog</label> <br/> <small>(Starting with http:// or https://)</small>
-        <input class="form-control" ng-model="user.website" placeholder="e.g. http://www.meanmap.com" name="website" type="text" id="website">
-      </div>
-
-      <!-- Github_url Form Input -->
-      <div class="form-group col-lg-6">
-        <label for="github_url">GitHub Profile</label> <br/> <small>(Starting with http:// or https://)</small>
-        <input class="form-control" ng-model="user.githubProfile" placeholder="e.g. https://github.com/busayo" name="github_url" type="text" id="github_url" required>
-        <div class="help-block text-danger" ng-if="signUpForm.github_url.$dirty" ng-messages="signUpForm.github_url.$error">
-          <div ng-message="required" class="has-error">Github Url is required.</div>
+        <!-- Website Form Input -->
+        <div class="form-group col-lg-6">
+          <label for="website">Website / Blog</label> <br/> <small>(Starting with http:// or https://)</small>
+          <input class="form-control" ng-model="user.website" placeholder="e.g. http://www.meanmap.com" name="website" type="text" id="website">
         </div>
-      </div>
 
-      <!-- Address Form Input -->
-      <div class="form-group col-lg-12">
-        <label for="address">Address</label> <small>(For the map)</small>
-        <input class="form-control" ng-model="user.address" placeholder="e.g. Class 7, Herbert Macaulay, Sabo Yaba, Lagos, Nigeria" name="address" type="text" id="address" required>
-        <div class="help-block text-danger" ng-if="signUpForm.address.$dirty" ng-messages="signUpForm.address.$error">
-          <div ng-message="required" class="has-error">Address is required.</div>
+        <!-- Github_url Form Input -->
+        <div class="form-group col-lg-6">
+          <label for="github_url">GitHub Profile</label> <br/> <small>(Starting with http:// or https://)</small>
+          <input class="form-control" ng-model="user.githubProfile" placeholder="e.g. https://github.com/busayo" name="github_url" type="text" id="github_url" required>
+          <div class="help-block text-danger" ng-if="signUpForm.github_url.$dirty" ng-messages="signUpForm.github_url.$error">
+            <div ng-message="required" class="has-error">Github Url is required.</div>
+          </div>
         </div>
+
+        <!-- Address Form Input -->
+        <div class="form-group col-lg-12">
+          <label for="address">Address</label> <small>(For the map)</small>
+          <input class="form-control" ng-model="user.address" placeholder="e.g. Class 7, Herbert Macaulay, Sabo Yaba, Lagos, Nigeria" name="address" type="text" id="address" required>
+          <div class="help-block text-danger" ng-if="signUpForm.address.$dirty" ng-messages="signUpForm.address.$error">
+            <div ng-message="required" class="has-error">Address is required.</div>
+          </div>
+        </div>
+
+        <!-- Sign up Form Input -->
+        <div class="form-group col-lg-6">
+          <button class="form-control btn btn-lg" type="submit" ng-disabled="signUpForm.$invalid">Sign Up</button>
+        </div>
+      </form>
       </div>
 
-      <!-- Sign up Form Input -->
-      <div class="form-group col-lg-6">
-        <button class="form-control btn btn-lg" type="submit" ng-disabled="signUpForm.$invalid">Sign Up</button>
+      <div class="col-md-6">
+        <h3 class="dark-grey">Sign up now for <strong>FREE</strong></h3>
+        <ul class="list-unstyled" style="line-height: 2">
+            <li><span class="fa fa-check text-success"></span> Place yourself on the map</li>
+            <li><span class="fa fa-check text-success"></span> Get tons of resources</li>
+            <li><span class="fa fa-check text-success"></span> Save your favorites</li>
+            <li><span class="fa fa-check text-success"></span> Be a part of the community</li>
+            <li><span class="fa fa-check text-success"></span> Learn</li>
+            <li><a href="http://laramap.com/page/about"><u>Read more</u></a></li>
+        </ul>
       </div>
-    </form>
     </div>
+  </section>
+</div>
+<!-- End Main Container for User creation Page View -->
 
-    <div class="col-md-6">
-      <h3 class="dark-grey">Sign up now for <strong>FREE</strong></h3>
-      <ul class="list-unstyled" style="line-height: 2">
-          <li><span class="fa fa-check text-success"></span> Place yourself on the map</li>
-          <li><span class="fa fa-check text-success"></span> Get tons of resources</li>
-          <li><span class="fa fa-check text-success"></span> Save your favorites</li>
-          <li><span class="fa fa-check text-success"></span> Be a part of the community</li>
-          <li><span class="fa fa-check text-success"></span> Learn</li>
-          <li><a href="http://laramap.com/page/about"><u>Read more</u></a></li>
-      </ul>
-    </div>
-  </div>
-</section>
+<!-- Inject Footer here -->
+<div data-ng-include data-src="'../../footer.html'"></div>
