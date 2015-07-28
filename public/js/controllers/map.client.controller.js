@@ -15,7 +15,6 @@ app.controller('MapController', ['$rootScope','$scope','$http','$location','$win
       Geocoder.geocodeAddress(info.address).then( function(response){
         var value = {};
         var length = response.formattedAddress.split(',').length;
-        console.log("Formatted address ", response.formattedAddress.split(',')[length - 1]);
         $scope.markers[info.username] = {};
         $scope.markers[info.username].layer     = 'realworld';
         $scope.markers[info.username].lat       = response.lat;
