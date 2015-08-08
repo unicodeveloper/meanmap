@@ -3,7 +3,7 @@ var appRoutes = angular.module('appRoutes', []);
 appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',function($routeProvider, $locationProvider, $sceDelegateProvider){
   $routeProvider
     .when('/', {
-        templateUrl: './views/home.client.view.html',
+        templateUrl: './views/pages/home.client.view.html',
         requireAuth: false
     })
     .when('/admin01234-meanmap/tutorials', {
@@ -30,7 +30,7 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         requireAuth: false
     })
     .when('/mean-developers', {
-        templateUrl: './views/developers.client.view.html',
+        templateUrl: './views/pages/developers.client.view.html',
         requireAuth: false
     })
     .when('/mean-developers/:username', {
@@ -39,7 +39,7 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         requireAuth: false
     })
     .when('/page/contact', {
-        templateUrl: './views/contact.client.view.html',
+        templateUrl: './views/pages/contact.client.view.html',
         requireAuth: false
     })
     .when('/account', {
@@ -53,11 +53,7 @@ appRoutes.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         requireAuth: true,
     })
     .when('/page/about', {
-        templateUrl: './views/about.client.view.html',
-        requireAuth: false
-    })
-    .when('/page/help', {
-        templateUrl: './views/help.client.view.html',
+        templateUrl: './views/pages/about.client.view.html',
         requireAuth: false
     })
     .when('/post-a-job', {
