@@ -2,6 +2,15 @@
 
 Meanmap is an interactive map for Mean Stack Developers all over the world. The mean stack has become one of the biggest communities of fans, contributors and backers worldwide. It provides an avenue where a mean stack developer can easily identify another developer in his local environment especially where there is no local meetup group.
 
+## Installation
+
+1. Clone this repository: `git clone git@github.com:busayo/meanmap.git meanmap/`
+2. `cd` into the meanmap folder and run the following commands:
+    1. Run `npm install`
+    2. Run `nodemon server.js`
+3. Open your chrome browser and see the application on `localhost:3000`
+
+
 ## Contributing
 
 Thank you for considering contributing to Meanmap! The contribution guide is as follows:
