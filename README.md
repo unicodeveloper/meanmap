@@ -10,4 +10,4 @@ Thank you for considering contributing to Meanmap! The contribution guide can be
 If you discover a security vulnerability within Meanmap, please send an e-mail to Prosper Otemuyiwa at prosperotemuyiwa@gmail.com. All security vulnerabilities will be promptly addressed.
 
 ### License
-Meanmap is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Meanmap is open-sourced software licensed under the [MIT license](https://github.com/busayo/meanmap/blob/master/LICENSE)
