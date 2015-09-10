@@ -50,16 +50,17 @@ module.exports = {
   getEachTutorialDetails: function(req, res, next){
     var tutorialSlug = req.params.slug;
 
-    Tutorial.findOne({ slug: tutorialSlug }, function (err, tuts) {
+    Tutorial.find({ slug: tutorialSlug }, function (err, tutorial) {
       if(err) {
         return res.status(404).json({ err: err });
       }
 
-      if(!tuts){
+      if(tutorial.length === 0){
         return res.json({ success: false, message: 'Tutorial not found.' });
       }
-      else{
+      else if(tutorial.length == 1) {
         var tutorialDetails = {};
+        var tuts = tutorial[0];
         tutorialDetails.id             = tuts._id;
         tutorialDetails.title          = tuts.title;
         tutorialDetails.content        = tuts.content;

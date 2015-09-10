@@ -67,23 +67,24 @@ module.exports = {
   getEachProjectDetail: function(req, res, next){
     var projectSlug = req.params.projectSlug;
 
-    Project.find({ slug: projectSlug }, function (err, proj) {
+    Project.find({ slug: projectSlug }, function (err, project) {
       if(err) {
         return res.status(404).json({ err: err });
       }
 
-      if(!proj){
+      if(project.length === 0){
         return res.json({ success: false, message: 'Project not found.' });
       }
-      else {
+      else if(project.length == 1) {
         var projectDetails = {};
-        projectDetails.id             = proj._id;
-        projectDetails.name           = proj.name;
-        projectDetails.slug           = proj.slug;
-        projectDetails.description    = proj.description;
-        projectDetails.url            = proj.url;
-        projectDetails.postedBy       = proj.postedBy;
-        projectDetails.postedOn       = proj.registered_on;
+        var projects = project[0];
+        projectDetails.id             = projects._id;
+        projectDetails.name           = projects.name;
+        projectDetails.slug           = projects.slug;
+        projectDetails.description    = projects.description;
+        projectDetails.url            = projects.url;
+        projectDetails.postedBy       = projects.postedBy;
+        projectDetails.postedOn       = projects.registered_on;
 
         return res.json({success: true, project: projectDetails});
       }

@@ -101,27 +101,27 @@ module.exports = {
   getEachUserByUsername: function(req, res, next){
     var userReal = req.params.username;
 
-    User.findOne({username: userReal}, function (err, user) {
+    User.find({username: userReal}, function (err, user) {
       if(err) {
         return res.status(404).json({ err: err });
       }
 
-      if(!user){
+      if(user.length === 0){
         return res.json({ success: false, message: 'User not found.' });
       }
-      else{
+      else if(user.length == 1) {
         var userDetails = {};
-        userDetails.email           = user.email;
-        userDetails.fullname        = user.fullname;
-        userDetails.username        = user.username;
-        userDetails.user_avatar     = user.user_avatar;
-        userDetails.admin           = user.admin;
-        userDetails.bio             = user.bio;
-        userDetails.hire_status     = user.hire_status;
-        userDetails.address         = user.address;
-        userDetails.github_profile  = user.github_profile;
-        userDetails.website         = user.website;
-        userDetails.registered      = user.registered_on;
+        userDetails.email           = user[0].email;
+        userDetails.fullname        = user[0].fullname;
+        userDetails.username        = user[0].username;
+        userDetails.user_avatar     = user[0].user_avatar;
+        userDetails.admin           = user[0].admin;
+        userDetails.bio             = user[0].bio;
+        userDetails.hire_status     = user[0].hire_status;
+        userDetails.address         = user[0].address;
+        userDetails.github_profile  = user[0].github_profile;
+        userDetails.website         = user[0].website;
+        userDetails.registered      = user[0].registered_on;
 
         return res.json({success: true, user: userDetails});
       }
@@ -139,19 +139,19 @@ module.exports = {
   resetUserPassword: function(req, res, next){
     var userEmail = req.body.email;
 
-    User.findOne({email: userEmail}, function (err, user) {
+    User.find({email: userEmail}, function (err, user) {
       if(err) {
         return res.status(404).json({ err: err , req: req.body});
       }
 
-      if(!user){
+      if(user.length === 0){
         return res.json({ success: false, message: 'User not found.' });
       }
-      else {
+      else if(user.length == 1) {
         var userDetails = {};
         var hash = uuid.v4();
-        userDetails.email           = user.email;
-        userDetails.username        = user.username;
+        userDetails.email           = user[0].email;
+        userDetails.username        = user[0].username;
         userDetails.pwdResetHash    = hash;
 
         var transporter = nodemailer.createTransport(secrets.mailOptions);
@@ -239,23 +239,23 @@ module.exports = {
     var user  = new User();
     var token = jwt.sign(user, secrets.sessionSecret, { expiresInMinutes: 1440 });
 
-    User.findOne({email: req.body.email}, function(err, user) {
+    User.find({email: req.body.email}, function(err, user) {
       if(err){
         return res.status(500).json({ error: err });
       }
 
-      if(!user){
+      if(user.length === 0){
         return res.json({ success: false, message: 'Authentication failed. User not found.' });
       }
-      else {
+      else if(user.length == 1) {
         var users = new User();
-        users.comparePassword(req.body.password, user.password, function(err, result){
+        users.comparePassword(req.body.password, user[0].password, function(err, result){
 
           if(err){
             return res.status(500).json({ error: 'Server Error'});
           }
 
-          var userObject = user;
+          var userObject = user[0];
           var currUser   = _.pick(userObject, '_id', 'fullname', 'user_avatar', 'username');
 
           if(result){
