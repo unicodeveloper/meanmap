@@ -1,4 +1,4 @@
-[![Latest Stable Version](https://poser.pugx.org/busayo/meanmap/v/stable.svg)](https://github.com/busayo/meanmap/releases)
+[![Latest Stable Version](https://img.shields.io/github/release/busayo/meanmap.svg?style=flat-square)](https://github.com/busayo/meanmap/releases)
 ![](https://img.shields.io/badge/unicodeveloper-approved-brightgreen.svg)
 
 ## Meanmap
