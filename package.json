@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/busayo/meanmap.git"
+    "url": "https://github.com/unicodeveloper/meanmap.git"
   },
   "keywords": [
     "Mean",
@@ -29,9 +29,9 @@
   "author": "Prosper Otemuyiwa",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/busayo/meanmap/issues"
+    "url": "https://github.com/unicodeveloper/meanmap/issues"
   },
-  "homepage": "https://github.com/busayo/meanmap",
+  "homepage": "https://github.com/unicodeveloper/meanmap",
   "dependencies": {
     "async": "^1.2.1",
     "bcrypt": "^0.8.3",
