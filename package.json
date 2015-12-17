@@ -4,7 +4,7 @@
   "description": "Mean map is a directory for mean stack developers all over the world",
   "main": "server.js",
   "engines": {
-    "node": "4.1.1"
+    "node": "0.12.7"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
