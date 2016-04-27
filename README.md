@@ -7,11 +7,18 @@ Meanmap is an interactive map for Mean Stack Developers all over the world. The 
 
 ## Installation
 
-1. Clone this repository: `git clone git@github.com:busayo/meanmap.git meanmap/`
-2. `cd` into the meanmap folder and run the following commands:
+1. Clone this repository: `git clone git@github.com:unicodeveloper/meanmap.git meanmap/`
+2. `cd` into the meanmap folder.
+3. Create a `.env` file in the root directory and add the appropriate env variables like so:
+    1. SESSION_SECRET=ilovemeanmap
+    2. MONGODB=mongodb://localhost:27017/meanmap
+    ....
+Check the `config/secrets.js` to have an idea of all the environment variables to fill in.
+4. Now, run the following commands:
     1. Run `npm install`
     2. Run `nodemon server.js`
-3. Open your chrome browser and see the application on `localhost:3000`
+5. Start up MongoDB by running `mongod` from the terminal or whatever way you normally start up your mongoDB.
+6. Open your chrome browser and see the application on `localhost:3000`
 
 
 ## Contributing
