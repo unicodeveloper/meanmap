@@ -237,7 +237,7 @@ module.exports = {
    */
   authenticateUserByEmail: function(req, res){
     var user  = new User();
-    var token = jwt.sign(user, secrets.sessionSecret, { expiresInMinutes: 1440 });
+    var token = jwt.sign(user, secrets.sessionSecret, { expiresIn: 86400 });
 
     User.find({email: req.body.email}, function(err, user) {
       if(err){
